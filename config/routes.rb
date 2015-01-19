@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'users#welcome'
+  get 'buyers/index'
 
+  root to: "page#welcome"
   get "login" => "users#login", :as => "login"
-
   get "register" => "users#register", :as => "register"
-
   post "create_login_session" => "users#create_login_session"
-
   delete "logout" => "users#logout", :as => "logout"
 
   resources :users, only: [:create]
@@ -17,6 +15,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
   get '/calendar' => 'page#calendar'
+  get '/phone_upload' => 'buyers#phone_upload', :as => "phone_upload"
+  get '/order_audit' => 'buyers#order_audit', :as => "order_audit"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

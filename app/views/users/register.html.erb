@@ -1,4 +1,5 @@
 <% @nav = 'register' %>
+<%= render 'shared/header'  %>
 
     <div class="mainbar">
       
@@ -38,12 +39,22 @@
                                             <div class="col-lg-6">
                                               <%= f.text_field :name, class: "form-control" %>
                                             </div>
+                                            <div class="col-lg-3">
+                                            <% if @user.errors[:name].any? %>
+                                              <label class="label label-warning"><%= @user.errors[:name][0] %></label>
+                                            <% end %>
+                                            </div>
                                           </div>   
                                           <!-- Email -->
                                           <div class="form-group">
                                             <label class="control-label col-lg-3" for="email1">Email</label>
                                             <div class="col-lg-6">
                                               <%= f.text_field :email, :class => "form-control" %>
+                                            </div>
+                                            <div class="col-lg-3">
+                                            <% if @user.errors[:email].any? %>
+                                              <label class="label label-warning"><%= @user.errors[:email][0] %></label>
+                                            <% end %>
                                             </div>
                                           </div>
                                           <!-- Password -->
@@ -52,12 +63,22 @@
                                             <div class="col-lg-6">
                                               <%= f.password_field :password, :class => "form-control" %>
                                             </div>
+                                            <div class="col-lg-3">
+                                            <% if @user.errors[:password].any? %>
+                                              <label class="label label-warning"><%= @user.errors[:password][0] %></label>
+                                            <% end %>
+                                            </div>
                                           </div>
                                           <!-- password_confirmation -->
                                           <div class="form-group">
                                             <label class="control-label col-lg-3" for="password2">Password</label>
                                             <div class="col-lg-6">
                                               <%= f.password_field :password_confirmation, :class => "form-control" %>
+                                            </div>
+                                            <div class="col-lg-3">
+                                            <% if @user.errors[:password_confirmation].any? %>
+                                              <label class="label label-warning"><%= @user.errors[:password_confirmation][0] %></label>
+                                            <% end %>
                                             </div>
                                           </div>
                                           
@@ -66,7 +87,7 @@
                                              <!-- Buttons -->
                        <div class="col-lg-6 col-lg-offset-1">
                         <%= f.submit "注册", :class => "btn btn-danger" %>
-                        <button type="reset" class="btn btn-success">Reset</button>
+                        <button type="reset" class="btn btn-success">重设</button>
                       </div>
                       <% end %>
                                           </div>
@@ -86,3 +107,4 @@
 
     <!-- Matter ends -->
 
+<%= render partial: "shared/footer" %>

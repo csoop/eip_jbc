@@ -1,12 +1,11 @@
 class PageController < ApplicationController
-	def welcome
-		
-	end
+  def welcome
+    unless current_user
+      redirect_to :login
+    end
+  end
 
-	def calendar
-	end
+  def calendar
+  end
 
-	def register
-		
-	end
 end

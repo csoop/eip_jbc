@@ -120,14 +120,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (= 3.1.7)
+  bcrypt (~> 3.1.7)
   coffee-rails (= 4.0.1)
-  jbuilder (= 2.2.6)
+  jbuilder (~> 2.0)
   jquery-rails (= 3.1.2)
   mysql2
   rails (= 4.1.2)
   sass-rails (= 4.0.5)
-  sdoc (= 0.4.1)
+  sdoc (~> 0.4.0)
   spring
   thin
   turbolinks (= 2.5.3)

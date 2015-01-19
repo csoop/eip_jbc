@@ -1,23 +1,10 @@
 <% @nav = 'welcome' %>
 <!-- Main bar -->
+<%= render 'shared/header'  %>
+
 <div class="mainbar">
   
-  <!-- Page heading -->
-  <div class="page-head">
-    <h2 class="pull-left"><i class="icon-home"></i> 首页</h2>
-
-    <!-- Breadcrumb -->
-    <div class="bread-crumb pull-right">
-      <a href="index.html"><i class="icon-home"></i> 首页</a> 
-      <!-- Divider -->
-      <span class="divider">/</span> 
-      <a href="#" class="bread-current">控制台</a>
-    </div>
-
-    <div class="clearfix"></div>
-
-  </div>
-  <!-- Page heading ends -->
+<%= render 'shared/content_header' %>
 
 
 
@@ -234,9 +221,9 @@
               <div class="widget-foot">
                   
                   <form class="form-inline">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Type your message here...">
-				</div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Type your message here...">
+        </div>
                     <button type="submit" class="btn btn-primary">Send</button>
                   </form>
 
@@ -271,10 +258,10 @@
                   <div class="file-meta">3.3 of 5MB - 5 mins - 1MB/Sec</div>
 
                   <div class="progress progress-animated progress-striped">
-				  <div class="progress-bar progress-bar-success" data-percentage="100">
-					<span class="sr-only">100 % completed</span>
-				  </div>
-			  </div>
+          <div class="progress-bar progress-bar-success" data-percentage="100">
+          <span class="sr-only">100 % completed</span>
+          </div>
+        </div>
                 </li>
 
                 <li>
@@ -560,4 +547,4 @@
 </div>
 
 <!-- Mainbar ends -->
-
+<%= render partial: "shared/footer" %>
