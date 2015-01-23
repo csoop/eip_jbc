@@ -22,11 +22,10 @@
         </div>
         <div class="col-sm-9">
           <div id="dropzone">
-            <form action="#" class="dropzone">
-              <div class="fallback">
-                <input name="file" type="file" multiple="" />
-              </div>
-            </form>
+            <%= form_for :buyer, html: {class: "dropzone"} do |f| %>
+            <div class="fallback">
+              <%= f.file_field :image %>
+            </div>
           </div><!-- PAGE CONTENT ENDS -->
         </div>
           <!-- Chosen选择 --> 
@@ -67,6 +66,7 @@
                               <br />
                                   <button type="reset" class="btn btn-success">提交</button>
                               </div>
+           <% end %>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div>

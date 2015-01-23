@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
   get '/calendar' => 'page#calendar'
-  get '/phone_upload' => 'buyers#phone_upload', :as => "phone_upload"
+  get 'phone_upload' => 'buyers#phone_upload', :as => "phone_upload"
   get '/order_audit' => 'buyers#order_audit', :as => "order_audit"
 
   # Example of regular route:

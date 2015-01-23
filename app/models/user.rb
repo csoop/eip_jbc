@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   before_create { generate_token(:token) }
   validates :name, :email, presence: true
   validates :name, :email, uniqueness: { case_sensitive: false} 
+  has_many :buyers
 
 	def generate_token(column)
 	  begin
