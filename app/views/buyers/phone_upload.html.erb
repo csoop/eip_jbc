@@ -22,9 +22,10 @@
         </div>
         <div class="col-sm-9">
           <div id="dropzone">
-            <%= form_for :buyer, html: {class: "dropzone"} do |f| %>
+            <%= form_for @buyer, html: {class: "dropzone", multipart: 'true'} do |f| %>
             <div class="fallback">
-              <%= f.file_field :image %>
+              <%= f.hidden_field :user_id %>
+              <%= file_field_tag :attachment %>
             </div>
           </div><!-- PAGE CONTENT ENDS -->
         </div>
@@ -34,37 +35,24 @@
           
                             <div class="col-sm-3">
                               <span class="bigger-110">面料</span>
-                              <select class="width-80 chosen-select" id="form-field-select-3" data-placeholder="Choose a Country...">
-                                <option value="">&nbsp;</option>
-                                <option value="AZ">皮革</option>
-                                <option value="AR">布艺</option>
-                                <option value="CA">California</option>
-                                <option value="CO">Colorado</option>
-                                <option value="CT">Connecticut</option>
-                                <option value="DE">Delaware</option>
-                                <option value="FL">Florida</option>
-                                <option value="GA">Georgia</option>
-                              </select>
+                              <%= select_tag "fabric", "<option value='皮革'>皮革</option>
+                                <option value='布艺'>布艺</option>".html_safe, class: 'width-80 chosen-select', data: { placeholder: 'Choose a Country...' } %>
+                              
                               </div>
 
                              
                             <div class="col-sm-3">
                               <span class="bigger-110">颜色</span>
-                              <select multiple="" class="width-80 chosen-select" id="form-field-select-4" data-placeholder="选择颜色">
-                                <option value="AL">黑色</option>
-                                <option value="AK">黑白</option>
-                                <option value="AZ">灰白</option>
-                                <option value="AR">蓝色</option>
-                                <option value="CA">red</option>
-                                <option value="CO">green</option>
-                              </select>
+                              <%= select_tag "color", "<option value='黑色'>黑色</option>
+                                <option value='天蓝'>天蓝</option><option value='白'>白</option>".html_safe, multiple: true, class: "width-80 chosen-select", data: {placeholder:  "选择颜色"} %>
+                              
                               </div><!-- /span -->
                               
                                <!-- 选择结束 -->
                               
                               <div class="col-sm-3">
                               <br />
-                                  <button type="reset" class="btn btn-success">提交</button>
+                              <%= f.submit "提交", class: "btn btn-success" %>
                               </div>
            <% end %>
         </div><!-- /.col -->
@@ -121,9 +109,6 @@
         $(".chosen-select").chosen(); 
         $('#chosen-multiple-style').on('click', function(e){
           var target = $(e.target).find('input[type=radio]');
-          var which = parseInt(target.val());
-          if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
-           else $('#form-field-select-4').removeClass('tag-input-style');
         });
     </script>
 

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'buyers/index'
 
   root to: "page#welcome"
   get "login" => "users#login", :as => "login"
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
   get '/calendar' => 'page#calendar'
   get 'phone_upload' => 'buyers#phone_upload', :as => "phone_upload"
   get '/order_audit' => 'buyers#order_audit', :as => "order_audit"
+  resources :buyers, only: [:create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
