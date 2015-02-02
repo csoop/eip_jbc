@@ -1,25 +1,55 @@
-# -*- coding: utf-8 -*-
 class BuyersController < ApplicationController
-  def phone_upload
+  before_action :set_buyer, only: [:show, :update, :destroy]
+  def new
   	@buyer = Buyer.new
   end
 
-  def create
-  	@buyer = Buyer.new(params[:buyer])
+  def index
+    @buyers = Buyer.all
+  end
 
-  	respond_to do |format|
-  		if @buyer.save 
-  			Attachment.create(:attachment => params[:attachment], :attachmentable => @buyer) if params[:attachment]
-  			format.html {redirect_to :phone_upload, notice: '上传成功'}
-  			format.json {render json: @buyer, status: :created, location: @buyer}
-  		else
-  			format.html {render action: "new"}
-  			format.json {render json: @buyer.errors, status: :unprocessable_entity }
-  		end
-  	end
+  # POST /buyers
+  def create
+  	@buyer = Buyer.new(:fabric => "abd", :color => "red")
+
+    respond_to do |format|
+      if @buyer.save
+        format.html { redirect_to @buyer, notice: '创建成功!' }
+        format.json { render :show, status: :created, location: @buyer }
+      else
+        format.html { render :new }
+        format.json { render json: @buyer.errors, status: :unprocessable_entity }
+  	 end
+    end
+  end
+
+  def show
+  end
+
+  def update
+    respond_to do |format|
+      if @buyer.update(buyer_params)
+        format.html { redirect_to @buyer, notice: 'Product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @buyer }
+      else
+        format.html { render :edit }
+        format.json { render json: @buyer.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   def order_audit
   	
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_buyer
+      @buyer = Buyer.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def buyer_params
+      params.require(:buyer).permit(:fabric, :color)
+    end
 end

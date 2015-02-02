@@ -1,0 +1,86 @@
+<% @nav = 'buyer_new' %>
+<%= render 'shared/header' %>
+<!-- Main bar -->
+<div class="mainbar">
+
+<%= render 'shared/content_header' %>
+
+
+<!-- Matter -->
+
+<div class="matter">
+<div class="container">
+  <div class="row">
+        <div class="col-xs-12">
+          <!-- PAGE CONTENT BEGINS -->
+
+          <div class="alert alert-info">
+            <i class="icon-hand-right"></i>
+
+            所有上传资料!
+          </div>
+        </div>
+        
+          <!-- Chosen选择 --> 
+                <div>
+                  <tbody>
+                    <% @buyers.each do |buyer| %>
+                      <tr>
+                        <td><%= buyer.id %></td>
+                        <td><%= link_to '显示', buyer %></td>
+                        <td><%= link_to '删除', buyer, method: :delete, data: { confirm: '你确定吗?' } %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div>
+  </div>
+
+
+    <div class="clearfix"></div>
+
+</div>
+<!-- Content ends -->
+
+<!-- Matter ends -->
+    
+    <!--[if !IE]> -->
+
+    <script type="text/javascript">
+      window.jQuery || document.write("<script src='js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    </script>
+
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script src="http://ajax.useso.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
+
+
+    <script type="text/javascript">
+      if("ontouchend" in document) document.write("<script src='js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    </script>
+    <!-- page specific plugin scripts -->
+    <script src="/js/chosen.jquery.min.js"></script>
+    <script src="/js/custom.js"></script> 
+
+    <script type="text/javascript">
+
+        $(".chosen-select").chosen(); 
+        $('#chosen-multiple-style').on('click', function(e){
+          var target = $(e.target).find('input[type=radio]');
+        });
+        
+    </script>
+
+<!-- Footer starts -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+            <!-- Copyright info -->
+            <p class="copy">Copyright &copy; 2015 | <a href="#">金佰川EIP</a> </p>
+      </div>
+    </div>
+  </div>
+</footer>   

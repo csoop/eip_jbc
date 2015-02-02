@@ -1,0 +1,113 @@
+<% @nav = 'buyer_new' %>
+<%= render 'shared/header' %>
+<!-- Main bar -->
+<div class="mainbar">
+
+<%= render 'shared/content_header' %>
+
+
+<!-- Matter -->
+
+<div class="matter">
+<div class="container">
+  <div class="row">
+        <div class="col-xs-12">
+          <!-- PAGE CONTENT BEGINS -->
+
+          <div class="alert alert-info">
+            <i class="icon-hand-right"></i>
+
+            请先录入商品明细，点击提交后上传图片!
+          </div>
+        </div>
+        
+          <!-- Chosen选择 --> 
+                <div>
+                <%= form_for(@buyer) do |f| %>
+                <br />
+
+                    <div class="col-sm-3">
+                    <span class="bigger-110">面料</span>
+                    <%= f.select "fabric",  "<option value='皮革'>皮革</option>
+                      <option value='布艺'>布艺</option>".html_safe, class: 'width-80 chosen-select' %>
+                    
+                    </div>
+
+                    <div class="col-sm-3">
+                    <span class="bigger-110">颜色</span>
+                    <%= f.select "color", "<option value='黑色'>黑色</option>
+                      <option value='天蓝'>天蓝</option><option value='白'>白</option>".html_safe, multiple: true, class: "width-80 chosen-select", data: {placeholder: "选择颜色"}%>
+                    
+                    </div><!-- /span -->
+
+
+                    <div class="col-sm-3">
+                    <span class="bigger-110">品牌名称</span>
+                    <%= f.text_field :ppname %>
+                    
+                    </div>
+                    <div class="col-sm-3">
+                    <span class="bigger-110">款式编号</span>
+                    <%= f.text_field :styleid %>
+                    
+                    </div>
+                    
+                     <!-- 选择结束 -->
+                    
+                    <div class="col-sm-3">
+                    <br />
+                    <%= f.submit "提交", class: "btn btn-success", id: "submit-all" %>
+                    </div>
+                  <% end %>
+                </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div>
+  </div>
+
+
+    <div class="clearfix"></div>
+
+</div>
+<!-- Content ends -->
+
+<!-- Matter ends -->
+    
+    <!--[if !IE]> -->
+
+    <script type="text/javascript">
+      window.jQuery || document.write("<script src='js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    </script>
+
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script src="http://ajax.useso.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
+
+
+    <script type="text/javascript">
+      if("ontouchend" in document) document.write("<script src='js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    </script>
+    <!-- page specific plugin scripts -->
+    <script src="/js/chosen.jquery.min.js"></script>
+    <script src="/js/custom.js"></script> 
+
+    <script type="text/javascript">
+
+        $(".chosen-select").chosen(); 
+        $('#chosen-multiple-style').on('click', function(e){
+          var target = $(e.target).find('input[type=radio]');
+        });
+        
+    </script>
+
+<!-- Footer starts -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+            <!-- Copyright info -->
+            <p class="copy">Copyright &copy; 2015 | <a href="#">金佰川EIP</a> </p>
+      </div>
+    </div>
+  </div>
+</footer>   

@@ -33,6 +33,8 @@ gem 'bcrypt', '3.1.7'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'dropzonejs-rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

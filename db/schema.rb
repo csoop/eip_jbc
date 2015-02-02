@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126060004) do
-
-  create_table "attachments", force: true do |t|
-    t.string   "file_name"
-    t.string   "content_type"
-    t.string   "attachmentable_type"
-    t.integer  "attachmentable_id"
-    t.string   "attachment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20150131075730) do
 
   create_table "buyers", force: true do |t|
     t.string   "ppname"
@@ -34,6 +24,15 @@ ActiveRecord::Schema.define(version: 20150126060004) do
     t.string   "image"
     t.integer  "flag",       default: 0
   end
+
+  create_table "pictures", force: true do |t|
+    t.integer  "buyer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+  end
+
+  add_index "pictures", ["buyer_id"], name: "index_pictures_on_buyer_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

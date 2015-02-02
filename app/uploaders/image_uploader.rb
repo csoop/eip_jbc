@@ -1,6 +1,5 @@
-  # encoding: utf-8
+# encoding: utf-8
 require "digest/md5"
-require 'carrierwave/processing/mini_magick'
 
 class ImageUploader < CarrierWave::Uploader::Base
 
@@ -18,9 +17,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def cache_dir
-    "#{Rails.root}/tmp/uploads"
-  end
+  # def cache_dir
+  #   "#{Rails.root}/tmp/uploads"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -43,7 +42,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumb do
-    process :resize_to_fill => [40, 40]
+    process :resize_to_fit => [50, 50]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -52,11 +51,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end super.present?
+  # # Override the filename of the uploaded files:
+  # # Avoid using model.id or version_name here, see uploader/store.rb for details.
+  # # def filename
+  # #   "something.jpg" if original_filename
+  # # end super.present?
   def filename
     if super.present?
       # current_path 是 Carrierwave 上传过程临时创建的一个文件，有时间标记，所以它将是唯一的

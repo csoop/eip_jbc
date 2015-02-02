@@ -1,0 +1,66 @@
+<% @nav = 'phone_upload' %>
+<%= render 'shared/header' %>
+<!-- Main bar -->
+<div class="mainbar">
+
+<%= render 'shared/content_header' %>
+
+
+<!-- Matter -->
+
+<div class="matter">
+<div class="container">
+  <div class="row">
+
+        <div class="col-xs-12">
+            <% flash.each do |name, msg| %>
+              <div class="alert alert-info">
+                <i class="icon-hand-right"></i>
+                <%= content_tag :div, msg, :id => "flash_#{name}" %>
+              </div>
+            <% end %> 
+        </div>
+
+        <div class="col-xs-12">
+          <!-- PAGE CONTENT BEGINS -->
+
+          <div class="alert alert-info">
+            <i class="icon-hand-right"></i>
+
+            请上传图片，建议上传4张多角度照片!
+          </div>
+        </div>
+        <!--<div class="col-sm-9">
+          <div id="dropzone">
+            
+            <div class="fallback">
+            </div>
+          </div><!- PAGE CONTENT ENDS 
+        </div> -->
+        
+		<%= link_to '返回', buyers_path %>
+		<%= form_for [@buyer, Picture.new], :html => {id: 'picture-dropzone', class: :dropzone, multipart: true} do |f| %>
+		  <%= f.hidden_field :image %>
+		<% end %>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div>
+
+
+
+    <div class="clearfix"></div>
+
+</div>
+
+<!-- Footer starts -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+            <!-- Copyright info -->
+            <p class="copy">Copyright &copy; 2015 | <a href="#">金佰川EIP</a> </p>
+      </div>
+    </div>
+  </div>
+</footer>   
+

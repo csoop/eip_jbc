@@ -312,9 +312,9 @@
               <li><a href="#">Submenu #3</a></li>
             </ul>-->
           </li>
-          <li class="has_sub"><a href="#"  <%= "class='open'".html_safe if @nav == 'phone_upload' || @nav == 'order_audit' %> > <i class="icon-camera-retro"></i> 买手&供应商  <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
+          <li class="has_sub"><a href="#"  <%= "class='open'".html_safe if @nav == 'buyer_new' || @nav == 'order_audit' %> > <i class="icon-camera-retro"></i> 买手&供应商  <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
             <ul>
-              <li><a href="/phone_upload">图片上传</a></li>
+              <li><%= link_to '图片上传', new_buyer_path %></li>
               <li><a href="/order_audit">款式发布</a></li>
               <li><a href="invoice.html">历史订货</a></li>
               <li><a href="profile.html">历史资料</a></li>
