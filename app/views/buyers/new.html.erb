@@ -10,104 +10,149 @@
 
 <div class="matter">
 <div class="container">
-  <div class="row">
-        <div class="col-xs-12">
-          <!-- PAGE CONTENT BEGINS -->
+<div class="row">
+      <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
 
-          <div class="alert alert-info">
-            <i class="icon-hand-right"></i>
+        <div class="alert alert-info">
+          <i class="icon-hand-right"></i>
 
-            请先录入商品明细，点击提交后上传图片!
-          </div>
+          请先录入商品明细，点击提交后上传图片!
         </div>
-        
-          <!-- Chosen选择 --> 
-                <div>
-                <%= form_for(@buyer) do |f| %>
-                <br />
-
-                    <div class="col-sm-3">
-                    <span class="bigger-110">面料</span>
-                    <%= f.select "fabric",  "<option value='皮革'>皮革</option>
-                      <option value='布艺'>布艺</option>".html_safe, class: 'width-80 chosen-select' %>
-                    
+      </div>
+      
+      <div class="widget-box">
+                    <div class="widget-header widget-header-blue widget-header-flat">
+                      <h4 class="lighter">添加新商品</h4>
                     </div>
 
-                    <div class="col-sm-3">
-                    <span class="bigger-110">颜色</span>
-                    <%= f.select "color", "<option value='黑色'>黑色</option>
-                      <option value='天蓝'>天蓝</option><option value='白'>白</option>".html_safe, multiple: true, class: "width-80 chosen-select", data: {placeholder: "选择颜色"}%>
-                    
-                    </div><!-- /span -->
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div id="fuelux-wizard" class="row-fluid" data-target="#step-container">
+                          <ul class="wizard-steps">
+                            <li data-target="#step1" class="active">
+                              <span class="step">1</span>
+                              <span class="title">添加货品信息</span>
+                            </li>
 
+                            <li data-target="#step2">
+                              <span class="step">2</span>
+                              <span class="title">为此货品图片</span>
+                            </li>
+                          </ul>
+                        </div>
 
-                    <div class="col-sm-3">
-                    <span class="bigger-110">品牌名称</span>
-                    <%= f.text_field :ppname %>
-                    
-                    </div>
-                    <div class="col-sm-3">
-                    <span class="bigger-110">款式编号</span>
-                    <%= f.text_field :styleid %>
-                    
-                    </div>
-                    
-                     <!-- 选择结束 -->
-                    
-                    <div class="col-sm-3">
-                    <br />
-                    <%= f.submit "提交", class: "btn btn-success", id: "submit-all" %>
-                    </div>
-                  <% end %>
-                </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div>
+                        <hr />
+                        <div class="position-relative">
+                          <div class="step-pane active" id="step1">
+                            <h3 class="lighter block green">请输入准确的商品信息</h3>
+                            <%= form_for (Buyer.new(:user_id=>current_user.id)), html: {class: "form-horizontal"} do |f| %>
+                            <%= f.hidden_field :user_id%>
+                              <div class="form-group has-warning">
+                                <label for="inputError" class="col-xs-12 col-sm-3 control-label no-padding-right" >品牌名称</label>
+
+                                <div class="col-xs-12 col-sm-5">
+                                  <span class="block input-icon input-icon-right">
+                                  <%= f.text_field :ppname, class: "width-100" %>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div class="form-group has-warning">
+                                <label for="inputError" class="col-xs-12 col-sm-3 control-label col-md-3 no-padding-right">货品款号</label>
+
+                                <div class="col-xs-12 col-sm-5">
+                                  <span class="block input-icon input-icon-right">
+                                    <%= f.text_field :styleid, class: "width-100" %>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div class="form-group has-info">
+                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">颜色</label>
+
+                                <div class="col-xs-12 col-sm-5">
+                                  <span class="block input-icon input-icon-right">
+                                    <%= f.select "color", "<option value='黑色'>黑色</option>
+                    <option value='天蓝'>天蓝</option><option value='白'>白</option>".html_safe, {}, {class: "width-80 chosen-select", data: {placeholder: "选择颜色"}, multiple: true} %>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div class="form-group has-info">
+                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">面料</label>
+
+                                <div class="col-xs-12 col-sm-5">
+                                  <span class="block input-icon input-icon-right">
+                                    <%= f.select "fabric",  "<option value='皮革'>皮革</option>
+                    <option value='布艺'>布艺</option>".html_safe, {}, {class: "width-80 chosen-select", data: {placeholder: "选择面料"}}  %>
+                                  </span>
+                                </div>
+                              </div>
+                          </div>
+                        <hr />
+                        <div class="row-fluid wizard-actions">
+                          <%= f.submit "添加", class: "btn btn-success btn-next"%>
+                            <i class="icon-arrow-right icon-on-right"></i>
+                        </div>
+
+                    <% end %>
+                      </div><!-- /widget-main -->
+                    </div><!-- /widget-body -->
+                  </div>
+    </div><!-- /.row -->
   </div>
+</div>
+</div>
 
-
-    <div class="clearfix"></div>
+  <div class="clearfix"></div>
 
 </div>
 <!-- Content ends -->
 
 <!-- Matter ends -->
+  
+  <!--[if !IE]> -->
+
+  <script type="text/javascript">
+    window.jQuery || document.write("<script src='/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+  </script>
+
+  <!-- <![endif]-->
+  <!--[if IE]>
+  <script src="http://ajax.useso.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <![endif]-->
+
+
+  <script type="text/javascript">
+    if("ontouchend" in document) document.write("<script src='/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+  </script>
+  <!-- page specific plugin scripts -->
+  <script src="/js/custom.js"></script> 
+  <script src="/js/chosen.jquery.min.js"></script>
+
+  <script src="/js/bootstrap.js"></script> <!-- Bootstrap -->   
+  <script type="text/javascript">
     
-    <!--[if !IE]> -->
+      $(".chosen-select").chosen(); 
+      $('#chosen-multiple-style').on('click', function(e){
+        var target = $(e.target).find('input[type=radio]');
+        var which = parseInt(target.val());
+        if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
+         else $('#form-field-select-4').removeClass('tag-input-style');
+      });
+    
+  </script>
 
-    <script type="text/javascript">
-      window.jQuery || document.write("<script src='js/jquery-2.0.3.min.js'>"+"<"+"/script>");
-    </script>
-
-    <!-- <![endif]-->
-    <!--[if IE]>
-    <script src="http://ajax.useso.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <![endif]-->
-
-
-    <script type="text/javascript">
-      if("ontouchend" in document) document.write("<script src='js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-    </script>
-    <!-- page specific plugin scripts -->
-    <script src="/js/chosen.jquery.min.js"></script>
-    <script src="/js/custom.js"></script> 
-
-    <script type="text/javascript">
-
-        $(".chosen-select").chosen(); 
-        $('#chosen-multiple-style').on('click', function(e){
-          var target = $(e.target).find('input[type=radio]');
-        });
-        
-    </script>
 
 <!-- Footer starts -->
 <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-            <!-- Copyright info -->
-            <p class="copy">Copyright &copy; 2015 | <a href="#">金佰川EIP</a> </p>
-      </div>
-    </div>
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+        <!-- Copyright info -->
+        <p class="copy">Copyright &copy; 2015 | <a href="#">金佰川EIP</a> </p>
   </div>
+</div>
+</div>
 </footer>   

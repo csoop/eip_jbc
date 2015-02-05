@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150131075730) do
+ActiveRecord::Schema.define(version: 20150204092922) do
 
   create_table "buyers", force: true do |t|
     t.string   "ppname"
     t.string   "styleid"
-    t.string   "color"
+    t.string   "color",      default: "0"
     t.string   "fabric"
     t.string   "user_id"
     t.datetime "created_at"

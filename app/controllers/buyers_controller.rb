@@ -1,5 +1,5 @@
 class BuyersController < ApplicationController
-  before_action :set_buyer, only: [:show, :update, :destroy]
+  before_action :set_buyer, only: [:show, :edit, :destroy]
   def new
   	@buyer = Buyer.new
   end
@@ -10,7 +10,7 @@ class BuyersController < ApplicationController
 
   # POST /buyers
   def create
-  	@buyer = Buyer.new(:fabric => "abd", :color => "red")
+  	@buyer = Buyer.new(buyer_params)
 
     respond_to do |format|
       if @buyer.save
@@ -26,20 +26,30 @@ class BuyersController < ApplicationController
   def show
   end
 
-  def update
-    respond_to do |format|
-      if @buyer.update(buyer_params)
-        format.html { redirect_to @buyer, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @buyer }
-      else
-        format.html { render :edit }
-        format.json { render json: @buyer.errors, status: :unprocessable_entity }
+  def edit
+     if params[:bj].blank?
+         @buyer.update_column('flag',2)
+     else
+       @buyer.update_column('flag',1)
       end
-    end
+   redirect_to :order_audit
   end
   
   def order_audit
-  	
+    @buyers=Buyer.all
+    @buyers.each do |s|
+      @pictures=s.pictures
+    end
+  end
+
+  def destroy
+    @buyer.destroy
+    @id=@buyer.pictures
+    @path= "#{Rails.root}/uploads/picture/image/#{@id}"
+    if File.exist?(@path)
+      File.delete(@path)
+    end
+    redirect_to :order_audit
   end
 
   private
@@ -50,6 +60,6 @@ class BuyersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def buyer_params
-      params.require(:buyer).permit(:fabric, :color)
+      params.require(:buyer).permit(:fabric, :ppname, :styleid, :user_id, :color => [])
     end
 end
