@@ -27,11 +27,11 @@ class BuyersController < ApplicationController
   end
 
   def edit
-     if params[:bj].blank?
-         @buyer.update_column('flag',2)
-     else
-       @buyer.update_column('flag',1)
-      end
+    if params[:bj].blank?
+      @buyer.update_column('flag',2)
+    else
+      @buyer.update_column('flag',1)
+    end
    redirect_to :order_audit
   end
   

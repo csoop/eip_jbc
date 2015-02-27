@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/calendar' => 'page#calendar'
   
   get '/order_audit' => 'buyers#order_audit', :as => "order_audit"
-  resources :buyers, only: [:create, :show, :new, :eidt, :destroy] do
+  resources :buyers, only: [:create, :show, :new, :edit, :destroy] do
     resources :pictures
   end
 

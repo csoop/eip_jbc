@@ -64,7 +64,7 @@
                               
                                 <%= f.hidden_field :image %> 
                                 <div class="dz-message">
-                                <span class="bigger-150 bolder"><i class="icon-caret-right red"></i> 将图片拖动到此处或 "点击"</span>
+                                <span class="bigger-150 bolder"><i class="icon-caret-right red"></i> 将图片拖动到此处或 '点击'</span>
                                 <span class="smaller-80 grey">(上传)</span> <br />
                                 <i class="upload-icon icon-cloud-upload blue icon-3x"></i>
                                 </div>
@@ -112,29 +112,7 @@
     <script src="/js/bootstrap.js"></script> 
     <script src="/js/custom.js"></script> 
     <script src="/js/dropzone.js"></script> 
-    <script type="text/javascript">
-Dropzone.options.photoDropzone = {
-  paramName: "image",
-  maxFilesize: 2,
-  //允许上传多个照片
-  uploadMultiple: true,
-
-  //每次上传的最多文件数，经测试默认为2，坑啊
-  //记得修改web.config 限制上传文件大小的节
-  parallelUploads: 5,
-
-  init: function() {
-    return this.on('removedfile', function(file) {
-      if (file.xhr) {
-        return $.ajax({
-          url: "" + ($("#picture-dropzone").attr("action")) + "/" + (JSON.parse(file.xhr.response).id),
-          type: 'DELETE'
-        });
-      }
-    });
-  }
-};
-    </script>
+    
 <!-- Footer starts -->
 <footer>
   <div class="container">

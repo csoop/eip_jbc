@@ -35,7 +35,7 @@
                                      
                                           <!-- Name -->
                                           <div class="form-group">
-                                            <label class="control-label col-lg-3" for="name1">Name</label>
+                                            <label class="control-label col-lg-3" for="name1">用户名</label>
                                             <div class="col-lg-6">
                                               <%= f.text_field :name, class: "form-control" %>
                                             </div>
@@ -59,7 +59,7 @@
                                           </div>
                                           <!-- Password -->
                                           <div class="form-group">
-                                            <label class="control-label col-lg-3" for="password2">Password</label>
+                                            <label class="control-label col-lg-3" for="password2">密  码</label>
                                             <div class="col-lg-6">
                                               <%= f.password_field :password, :class => "form-control" %>
                                             </div>
@@ -71,7 +71,7 @@
                                           </div>
                                           <!-- password_confirmation -->
                                           <div class="form-group">
-                                            <label class="control-label col-lg-3" for="password2">Password</label>
+                                            <label class="control-label col-lg-3" for="password2">确认密码</label>
                                             <div class="col-lg-6">
                                               <%= f.password_field :password_confirmation, :class => "form-control" %>
                                             </div>
@@ -86,8 +86,8 @@
                                           <div class="form-group">
                                              <!-- Buttons -->
                        <div class="col-lg-6 col-lg-offset-1">
-                        <%= f.submit "注册", :class => "btn btn-danger" %>
-                        <button type="reset" class="btn btn-success">重设</button>
+                        <%= f.submit "注册", :class => "btn btn-success" %>
+                        <button type="reset" class="btn btn-danger">重设</button>
                       </div>
                       <% end %>
                                           </div>

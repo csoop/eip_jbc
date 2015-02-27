@@ -7,7 +7,7 @@
 			<span>菜单</span>
 		  </button>
 		  <!-- Site name for smallar screens -->
-		  <a href="index.html" class="navbar-brand hidden-lg">首页</a>
+		  <a href="＃" class="navbar-brand hidden-lg">首页</a>
 		</div>
       
       
@@ -17,9 +17,9 @@
 
         <ul class="nav navbar-nav">  
 
-          <!-- Upload to server link. Class "dropdown-big" creates big dropdown -->
+          <!-- Upload to server link. Class "dropdown-big" creates big dropdown
           <li class="dropdown dropdown-big">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-success"><i class="icon-cloud-upload"></i></span> 上传到云服务器</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-success"><i class="icon-cloud-upload"></i></span> 上传到云服务器</a> -->
             <!-- Dropdown -->
             <ul class="dropdown-menu">
               <li>
@@ -81,7 +81,7 @@
         <!-- Search form -->
         <form class="navbar-form navbar-left" role="search">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
+				<input type="text" class="form-control" placeholder="搜索....">
 			</div>
 		</form>
         <!-- Links -->
@@ -241,50 +241,7 @@
 
         <!-- Data section -->
 
-        <div class="col-md-4">
-          <div class="header-data">
-
-            <!-- Traffic data -->
-            <div class="hdata">
-              <div class="mcol-left">
-                <!-- Icon with red background -->
-                <i class="icon-signal bred"></i> 
-              </div>
-              <div class="mcol-right">
-                <!-- Number of visitors -->
-                <p><a href="#">7000</a> <em>访问</em></p>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-
-            <!-- Members data -->
-            <div class="hdata">
-              <div class="mcol-left">
-                <!-- Icon with blue background -->
-                <i class="icon-user bblue"></i> 
-              </div>
-              <div class="mcol-right">
-                <!-- Number of visitors -->
-                <p><a href="#">3000</a> <em>用户</em></p>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-
-            <!-- revenue data -->
-            <div class="hdata">
-              <div class="mcol-left">
-                <!-- Icon with green background -->
-                <i class="icon-money bgreen"></i> 
-              </div>
-              <div class="mcol-right">
-                <!-- Number of visitors -->
-                <p><a href="#">5000</a><em>订单</em></p>
-              </div>
-              <div class="clearfix"></div>
-            </div>                        
-
-          </div>
-        </div>
+        <%= render 'shared/data_section' %>
 
       </div>
     </div>

@@ -84,7 +84,7 @@
 
                                 <div class="col-xs-12 col-sm-5">
                                   <span class="block input-icon input-icon-right">
-                                    <%= f.select "fabric",  "<option value='皮革'>皮革</option>
+                                    <%= f.select "fabric",  "<option value=''></option><option value='皮革'>皮革</option>
                     <option value='布艺'>布艺</option>".html_safe, {}, {class: "width-80 chosen-select", data: {placeholder: "选择面料"}}  %>
                                   </span>
                                 </div>
@@ -131,7 +131,6 @@
   <script src="/js/custom.js"></script> 
   <script src="/js/chosen.jquery.min.js"></script>
 
-  <script src="/js/bootstrap.js"></script> <!-- Bootstrap -->   
   <script type="text/javascript">
     
       $(".chosen-select").chosen(); 
