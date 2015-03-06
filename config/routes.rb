@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
   get '/calendar' => 'page#calendar'
+  get '/userweb' => 'usercars#index', :as => "usercars"
   
   get '/order_audit' => 'buyers#order_audit', :as => "order_audit"
   resources :buyers, only: [:create, :show, :new, :edit, :destroy] do
