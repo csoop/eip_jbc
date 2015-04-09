@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete "logout" => "users#logout", :as => "logout"
 
   resources :users, only: [:create]
+  resources :viewimages
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -14,12 +15,25 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
   get '/calendar' => 'page#calendar'
-  get '/userweb' => 'usercars#index', :as => "usercars"
-  
+  get '/userweb' => 'usercars#index', :as => "userwebs"
+  get '/userlogin' => 'usercars#login', :as => "userlogin"
+  get '/detail' => 'usercars#detail', :as => "detail"
+  get '/orders' => 'carts#orders'
+  get '/order' => 'usercars#order'
+  get '/inspect' => 'usercars#inspect' 
+  get '/upload' => 'usercars#upload'
+  get '/usercars/:id' => 'usercars#show', :as => "usercar"
+  delete 'usercars_logout' => 'usercars#logout', :as => "usercars_logout"
+  post 'usercars' => "usercars#create", :as => "usercars"
+
   get '/order_audit' => 'buyers#order_audit', :as => "order_audit"
   resources :buyers, only: [:create, :show, :new, :edit, :destroy] do
     resources :pictures
   end
+
+  post '/cart_update' => "cart_items#update", :as => "cart_update"
+  resources :carts
+  resources :cart_items
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

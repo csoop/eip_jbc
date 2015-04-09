@@ -14,11 +14,11 @@
       <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
 
-        <div class="alert alert-info">
+      <div class="alert alert-info">
           <i class="icon-hand-right"></i>
 
           请先录入商品明细，点击提交后上传图片!
-        </div>
+      </div>
       </div>
       
       <div class="widget-box">
@@ -46,7 +46,7 @@
                         <div class="position-relative">
                           <div class="step-pane active" id="step1">
                             <h3 class="lighter block green">请输入准确的商品信息</h3>
-                            <%= form_for (Buyer.new(:user_id=>current_user.id)), html: {class: "form-horizontal"} do |f| %>
+                            <%= form_for (@buyer), html: {class: "form-horizontal"} do |f| %>
                             <%= f.hidden_field :user_id%>
                               <div class="form-group has-warning">
                                 <label for="inputError" class="col-xs-12 col-sm-3 control-label no-padding-right" >品牌名称</label>
@@ -73,8 +73,8 @@
 
                                 <div class="col-xs-12 col-sm-5">
                                   <span class="block input-icon input-icon-right">
-                                    <%= f.select "color", "<option value='黑色'>黑色</option>
-                    <option value='天蓝'>天蓝</option><option value='白'>白</option>".html_safe, {}, {class: "width-80 chosen-select", data: {placeholder: "选择颜色"}, multiple: true} %>
+                                    <%= f.select "color", "<option value='黑'>黑</option>
+                    <option value='天蓝'>天蓝</option><option value='白'>白</option><option value='梅红'>梅红</option><option value='浅绿'>浅绿</option><option value='橘黄'>橘黄</option><option value='深紫'>深紫</option><option value='淡黄'>淡黄</option>".html_safe, {}, {class: "width-80 chosen-select", data: {placeholder: "选择颜色"}, multiple: true} %>
                                   </span>
                                 </div>
                               </div>
@@ -100,18 +100,13 @@
                       </div><!-- /widget-main -->
                     </div><!-- /widget-body -->
                   </div>
-    </div><!-- /.row -->
-  </div>
+</div><!-- /.row -->
 </div>
 </div>
-
-  <div class="clearfix"></div>
-
 </div>
-<!-- Content ends -->
 
 <!-- Matter ends -->
-  
+  <link rel="stylesheet" href="/style/chosen.css">
   <!--[if !IE]> -->
 
   <script type="text/javascript">
@@ -143,7 +138,7 @@
     
   </script>
 
-
+</div>
 <!-- Footer starts -->
 <footer>
 <div class="container">

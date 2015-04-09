@@ -1,0 +1,114 @@
+<% @nav = 'register' %>
+<%= render 'shared/header' %>
+<!-- Main bar -->
+<div class="mainbar">
+
+  <%= render 'shared/content_header' %>
+
+
+  <!-- Matter -->
+
+  <div class="matter">
+    <div class="container">
+      <div class="row">
+                <div class="col-xs-12">
+          <!-- PAGE CONTENT BEGINS -->
+
+          <div class="alert alert-info">
+            <i class="icon-hand-right"></i>
+
+            请上传图片!
+          </div>
+        </div>
+        <!--<div class="col-sm-9">
+          <div id="dropzone">
+            
+            <div class="fallback">
+            </div>
+          </div><!- PAGE CONTENT ENDS 
+        </div> -->
+        <div class="widget wred">
+
+          <div class="widget-head">
+          <i class="icon-lock"></i> 推荐上传
+          <div class="clearfix"></div>
+          </div>
+            <div class="widget-content">
+              <div class="padd">
+                  <%= form_for (@viewimage) do |f| %>
+                    <div class="form profile">
+                      <%= f.hidden_field :image %>
+                     <div class="form-group">
+                        <label class="control-label col-lg-3" for="name1">标题:</label>
+                      <div class="col-lg-6">
+                       <%= f.text_field :title, :class =>  "form-control" %>
+                       </div>
+                       <br />
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-lg-3" for="email1">内容:</label>
+                        <div class="col-lg-6">
+                        <%= f.text_area :content, :class => "form-control" %>
+                        </div>
+                        <br />
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-lg-3" for="email1"></label>
+                        <div class="col-lg-6">
+                        <%= f.file_field :image %>
+                        </div>
+                        <br />
+                        </div>
+                        <br />
+                     
+                      <%=f.submit '上传'%>
+                      </div>
+                  <% end %>
+                  </div>
+
+            </div><!-- /widget-main -->
+          </div><!-- /widget-body -->
+        </div>
+
+
+
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div>
+
+
+
+<div class="clearfix"></div>
+
+</div>
+
+<!--[if !IE]> -->
+
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- <![endif]-->
+<!--[if IE]>
+<script src="http://ajax.useso.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+
+
+<script type="text/javascript">
+    if("ontouchend" in document) document.write("<script src='/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<!-- page specific plugin scripts -->
+<script src="/js/bootstrap.js"></script>
+<script src="/js/custom.js"></script>
+<!-- Footer starts -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Copyright info -->
+        <p class="copy">Copyright &copy; 2015 | <a href="#">金佰川EIP</a> </p>
+      </div>
+    </div>
+  </div>
+</footer>   
+

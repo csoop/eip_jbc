@@ -2559,3 +2559,11 @@ color: #87ba21;
 /*.form-horizontal .control-label {
 width: 90px;
 }*/
+#count {
+  border: 1px solid #EEE;
+  outline-color: #E45D5D;
+  width: 40%;
+  font-size: 1em;
+  padding: 0.5em;
+  font-family: 'Open Sans', sans-serif;
+}

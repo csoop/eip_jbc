@@ -9,12 +9,16 @@
   <meta name="description" content="金佰川EIP" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="JBC_IT">
-  <link href="uservendor/css/style.css" rel='stylesheet' type='text/css' />
+  <link href="/uservendor/css/style.css" rel='stylesheet' type='text/css' />
+  <link href="/assets/dropzone/dropzone.css" rel='stylesheet' type='text/css' />
+  <link href="/style/font-awesome.css" rel='stylesheet' type='text/css' />
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= csrf_meta_tags %>
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</script>
 		<!--start-alert-scroller-->
-		<script src="uservendor/js/jquery.min.js"></script>
-		<script type="text/javascript" src="uservendor/js/jquery.easy-ticker.js"></script>
+		<script src="/uservendor/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/uservendor/js/jquery.easy-ticker.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$('#demo').hide();
@@ -23,15 +27,15 @@
 		</script>
 		<!--start-alert-scroller-->
 		<!-- start menu -->
-		<link href="uservendor/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-		<script type="text/javascript" src="uservendor/js/megamenu.js"></script>
+		<link href="/uservendor/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+		<script type="text/javascript" src="/uservendor/js/megamenu.js"></script>
 		<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
-		<script src="uservendor/js/menu_jquery.js"></script>
+		<script src="/uservendor/js/menu_jquery.js"></script>
 		<!-- //End menu -->
-		<!--slider-->
-		<link rel="stylesheet" href="uservendor/css/slippry.css">
-		<script src="uservendor/js/jquery-ui.js" type="text/javascript"></script>
-		<script src="uservendor/js/scripts-f0e4e0c2.js" type="text/javascript"></script>
+		<!--slider 首页Banner图片 -->
+		<link rel="stylesheet" href="/uservendor/css/slippry.css">
+		<script src="/uservendor/js/jquery-ui.js" type="text/javascript"></script>
+		<script src="/uservendor/js/scripts-f0e4e0c2.js" type="text/javascript"></script>
 		<script>
 			  jQuery('#jquery-demo').slippry({
 			  // general elements & wrapper
@@ -44,8 +48,8 @@
 			});
 		</script>
 		<!--start-pricerage-seletion-->
-		<script type="text/javascript" src="uservendor/js/jquery-ui.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="uservendor/css/jquery-ui.css">
+		<script type="text/javascript" src="/uservendor/js/jquery-ui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/uservendor/css/jquery-ui.css">
 		<script type='text/javascript'>//<![CDATA[ 
 			$(window).load(function(){
 			 $( "#slider-range" ).slider({
@@ -61,9 +65,9 @@
 			});//]]>  
 		</script>
 		<!--//End-pricerage-seletion-->
-		<!---move-top-top-->
-		<script type="text/javascript" src="uservendor/js/move-top.js"></script>
-		<script type="text/javascript" src="uservendor/js/easing.js"></script>
+		<!---move-top-top
+		<script type="text/javascript" src="uservendor/js/move-top.js"></script>-->
+		<script type="text/javascript" src="/uservendor/js/easing.js"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){		
@@ -73,10 +77,9 @@
 			});
 		</script>
  
+		<script type="text/javascript" src="/uservendor/js/jstarbox.js"></script>
+		<link rel="stylesheet" href="/uservendor/css/jstarbox.css" type="text/css" />
 
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="img/favicon/favicon.png">
 </head>
 
 <body>

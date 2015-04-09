@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
   	@current_user ||= User.find_by_token!(cookies[:token]) if cookies[:token]
   end
 
+  def current_cart
+    Cart.find(session[:cart_id])
+    rescue ActiveRecord::RecordNotFound
+        cart=Cart.create()
+        session[:cart_id]=cart.id
+        cart
+  end
+
   helper_method :current_user
 
 end

@@ -1,0 +1,66 @@
+<%= render 'shared/userheader' %>
+<div class="content login-box">
+	<div class="login-main">
+		<div class="wrap" style="border-top: 1px solid #EEE;">
+			<ul class="product-head">
+				<li><a href="index.html">主 页</a> <span>::</span></li>
+				<li class="active-page"><a href="#">订单管理>>订单审报</a></li>
+				<div class="clear"> </div>
+			</ul>
+			<h1>订单审报</h1>
+			<div class="register-grids">
+				
+						<div class="register-top-grid">
+								<h3>订单审报</h3>
+								<table class="table table-striped table-bordered table-hover" >
+									<thead style="background-color: #eee;">
+										<tr style="height:30px;">
+											<th><h5>图片<h5></th>
+											<th><h5>品牌<h5></th>
+											<th><h5>款式编码<h5></th>
+											<th><h5>颜色<h5></th>	
+											<th><h5>面料<h5></th>
+											<th><h5>数量<h5></th>
+											<th><h5>操作<h5></th>
+										</tr>
+									</thead>										
+									<tbody id="myTableProduct">	
+									<%= form_tag '/cart_update' do %>
+									<% @cart_item.each do |a| %>
+										<tr>
+											<td style="width:15%; height:60px;">
+											<%= image_tag a.buyer.pictures.last.image.url(:thumb) %>
+											</td>
+											<td><%= a.buyer.ppname %></td>
+											<td><%= a.buyer.styleid %></td>		
+											<td><%= a.color %></td>
+											<td><%= a.buyer.fabric %></td>
+											<td style="width:10%;"><%= text_field_tag a.id, a.count,style: "border: 2px solid #E45D5D;" %></td>
+											<td style="width:10%;">
+											<%= link_to '删除', a, method: :delete, data: { confirm: "你确定要删除此条货品吗?" } %>
+											</td>
+										</tr>
+									<% end %>
+									</tbody>
+								</table>   			
+						</div>
+						<div id="uploadready" style="border-radius: 10px;">											
+							<div class="col-lg-8" style="padding-left: 20px;">			
+								<!-- <a class="shopping_list_end_3">商品金额总计：</a>
+								<a class="shopping_list_end_2"><a id="product_total"></a>元</a>	 -->
+							</div>		
+							<div class="col-lg-8" style="padding-left: 900px; float: right;">	
+								<%= submit_tag '申报' %>
+							</div>								
+						</div>	
+					<% end %> 
+					</div>
+								<div class="clear"> </div>
+						</div>
+						<div class="clear"> </div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+<%= render 'shared/userfooter' %>

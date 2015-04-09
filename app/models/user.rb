@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :name, :email, presence: true
   validates :name, :email, uniqueness: { case_sensitive: false} 
   has_many :buyers
+  has_many :carts
 
 	def generate_token(column)
 	  begin

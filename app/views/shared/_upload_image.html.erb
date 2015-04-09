@@ -1,0 +1,99 @@
+<div class="matter">
+<div class="container">
+  <div class="row">
+
+        <div class="col-xs-12">
+            <% flash.each do |name, msg| %>
+              <div class="alert alert-block alert-success">
+                <i class="icon-ok"></i><%= content_tag :div, msg, :id => "flash_#{name}" %>
+              </div>
+            <% end %> 
+        </div>
+
+        <div class="col-xs-12">
+          <!-- PAGE CONTENT BEGINS -->
+
+          <div class="alert alert-info">
+            <i class="icon-hand-right"></i>
+
+            请上传图片，建议上传4张多角度照片!
+          </div>
+        </div>
+        <!--<div class="col-sm-9">
+          <div id="dropzone">
+            
+            <div class="fallback">
+            </div>
+          </div><!- PAGE CONTENT ENDS 
+        </div> -->
+        <div class="widget-box">
+                      <div class="widget-header widget-header-blue widget-header-flat">
+                        <h4 class="lighter">添加新商品</h4>
+                      </div>
+
+                      <div class="widget-body">
+                        <div class="widget-main">
+                          <div id="fuelux-wizard" class="row-fluid" data-target="#step-container">
+                            <ul class="wizard-steps">
+                              <li data-target="#step1" class="complete">
+                                <span class="step">1</span>
+                                <span class="title">添加货品信息</span>
+                              </li>
+
+                              <li data-target="#step2" class="active">
+                                <span class="step">2</span>
+                                <span class="title">为此货品图片</span>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <hr />
+                          <div class="position-relative">
+                            <div class="step-pane" id="step2">
+                              <%= form_for [@buyer, Picture.new], :html => {id: 'picture-dropzone', class: :dropzone, multipart: true} do |f| %>
+                              
+                                <%= f.hidden_field :image %> 
+                                <div class="dz-message">
+                                <span class="bigger-150 bolder"><i class="icon-caret-right red"></i> 将图片拖动到此处或 '点击'</span>
+                                <span class="smaller-80 grey">(上传)</span> <br />
+                                <i class="upload-icon icon-cloud-upload blue icon-3x"></i>
+                                </div>
+                                </div>
+                                <% end %>
+                            </div>
+                          <hr />
+                          <div class="row-fluid wizard-actions">
+                            <%= link_to '返回到新建', new_buyer_path, class: "btn btn-info"%>
+                          </div>
+
+                        </div><!-- /widget-main -->
+                      </div><!-- /widget-body -->
+                    </div>
+
+
+
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div>
+    <div class="clearfix"></div>
+
+</div>
+<!--[if !IE]> -->
+
+    <script type="text/javascript">
+      window.jQuery || document.write("<script src='/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    </script>
+
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script src="http://ajax.useso.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
+
+
+    <script type="text/javascript">
+      if("ontouchend" in document) document.write("<script src='/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    </script>
+    <!-- page specific plugin scripts -->
+    <script src="/js/bootstrap.js"></script> 
+    <script src="/js/custom.js"></script> 
+    <script src="/js/dropzone.js"></script> 

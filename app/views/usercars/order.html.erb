@@ -1,0 +1,68 @@
+<%= render 'shared/userheader' %>
+<div class="content login-box">
+	<div class="login-main">
+		<div class="wrap" style="border-top: 1px solid #EEE;">
+			<ul class="product-head">
+				<li><a href="index.html">主 页</a> <span>::</span></li>
+				<li class="active-page"><a href="#">订单管理>>全部货品</a></li>
+				<div class="clear"> </div>
+			</ul>
+			<h1>货品</h1>
+			<div class="register-grids">
+				<form> 
+						<div class="register-top-grid">										
+								<div class="clear"> </div>
+						</div>
+						<div class="clear"> </div>
+						<div class="register-bottom-grid">
+								<h3>全部货品信息：</h3>
+								
+
+									<table class="table table-striped table-bordered table-hover">
+										<thead style="background-color: #eee;">
+											<tr style="height:30px;">
+												<th><h5>图片<h5></th>
+												<th><h5>品牌<h5></th>
+												<th><h5>款式编码<h5></th>
+												<th><h5>颜色<h5></th>	
+												<th><h5>面料<h5></th>
+												<th><h5>动作<h5></th>
+											</tr>
+										</thead>
+									<tbody>
+
+										<% @reception_all.each do |a| %>
+										<tr>
+											<td style="width:15%; height:60px;">
+												<%=image_tag a.pictures.last.image.url(:thumb) %>
+											</td>
+											<td><%=a.ppname %></td>
+											<td><%=a.styleid %></td>		
+											<td><%=a.color %></td>
+											<td><%=a.fabric %></td>
+											<td><%=link_to '查看详情', buyer: a.id, action:'detail'  %></td>
+
+										</tr> 								
+									<% end %>
+									<tbody>
+								</table>
+						<!-- Footer goes here -->
+						<!--<ul class="pagination">
+							<li><a href="#">上一页</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">下一页</a></li>
+						</ul>-->
+					</div>		
+					</div>
+								<div class="clear"> </div>
+						</div>
+						<div class="clear"> </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<%= render 'shared/userfooter' %>

@@ -1,0 +1,100 @@
+
+<!---start-wrap-->
+	<!---start-header-->
+	<div class="header">
+		<div class="top-header">
+			<div class="wrap">
+				<div class="top-header-left">
+					<ul>
+						<!---cart-tonggle-script-->
+						<script type="text/javascript">
+							$(function(){
+							    var $cart = $('#cart');
+							        $('#clickme').click(function(e) {
+							         e.stopPropagation();
+							       if ($cart.is(":hidden")) {
+							           $cart.slideDown("slow");
+							       } else {
+							           $cart.slideUp("slow");
+							       }
+							    });
+							    $(document.body).click(function () {
+							       if ($cart.not(":hidden")) {
+							           $cart.slideUp("slow");
+							       } 
+							    });
+							    });
+						</script>
+						<!---//cart-tonggle-script -->
+						<li><a class="cart" href="#"><span id="clickme"> </span></a></li>
+						<!---start-cart-bag -->
+						<div id="cart">你的订单有 <span>(<%= @cart_item.count ? @cart_item.count : '0' %>)</span>个</div>
+						<!---start-cart-bag -->
+						<!-- <li><a class="info" href="#"><span> </span></a></li> -->
+					</ul>
+				</div>
+				<div class="top-header-right">
+					<ul>
+						<!-- <li><a href="login.html">大十字店</a><span> </span></li> -->
+						<li> <%= link_to content_tag(:i, current_user.name, class: "active-icon c1"), usercars_logout_path, method: 'delete' %></li>
+					</ul>
+				</div>
+				<div class="clear"> </div>
+			</div>
+		</div>
+		<!--start-mid-head-->
+		<div class="mid-header">
+			<div class="wrap">
+				<div class="mid-grid-left">
+					<form>
+						<input type="text" placeholder="点击搜索更多精彩内容?" />
+					</form>
+				</div>
+				<div class="mid-grid-right">
+					<a class="logo" href="index.html"><span> </span></a>
+				</div>
+				<div class="clear"> </div>
+			</div>
+		</div>
+		<!--//End-mid-head-->
+		<!---start-bottom-header-->
+		<div class="header-bottom">
+			<div class="wrap" style="background:#fdfdfd;">
+			<!-- start header menu -->
+					<ul class="megamenu skyblue">
+						<li class="grid"><a class="color2" href="/userweb">首页</a>
+						</li>
+			  			<li class="active grid"><a class="color4" href="#">订单管理</a>
+							<div class="megapanel">
+								<div class="row">
+									<div class="col1">
+										<div class="h_nav">
+											<h4>订单管理</h4>
+											<ul>
+												<li><a href="order.html">全部货品</a></li>
+												<li><a href="inspect.html">订单审报</a></li>
+											</ul>	
+										</div>	
+								</div>
+								<div class="row">
+									<div class="col2"></div>
+									<div class="col1"></div>
+									<div class="col1"></div>
+									<div class="col1"></div>
+									<div class="col1"></div>
+								</div>
+			    				</div>
+						</li>				
+						<li><a class="color5" href="upload.html">我要上传</a>
+						</li>
+						<li><a class="color6" href="brand.html">竞争品牌</a>
+						</li>
+						<li><a class="color7" href="history.html">历史资料</a>
+						</li>
+					</ul>
+			</div>
+		</div>
+		</div>
+		<!--//End-bottom-header-->
+	<!---//End-header-->
+<!--start-image-slider-->

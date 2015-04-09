@@ -1,0 +1,25 @@
+<div class="content login-box">
+	<div class="login-main">
+		<div class="wrap">
+			<h1>登陆订货前台</h1>
+			<div class="login-right">
+				<h3>如果你有登陆账号，请直接登录!</h3>
+				<%= form_tag "/create_login_session", class: "form-horizontal" do %>
+					<div>
+						<span>账 号<label>*</label></span>
+						<%= text_field_tag :email, params[:email], class: "form-control", placeholder: "输入电子邮件" %>
+					</div>
+					<div>
+						<span>密 码<label>*</label></span>
+						<%= password_field_tag :password, params[:password], class: "form-control", placeholder: "输入登陆密码" %>
+					</div>
+					<!-- 门店登陆传参 -->
+					<%= hidden_field_tag :userlogin %>
+					<a class="forgot" href="#">忘记密码，请联系管理员</a>
+					<%= submit_tag "登陆" %>
+				<% end %>
+			</div>
+			<div class="clear"> </div>
+		</div>
+	</div>
+</div>

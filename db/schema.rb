@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204092922) do
+ActiveRecord::Schema.define(version: 20150407030153) do
 
   create_table "buyers", force: true do |t|
     t.string   "ppname"
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(version: 20150204092922) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
+    t.integer  "flag",       default: 0
+  end
+
+  create_table "cart_items", force: true do |t|
+    t.integer  "buyer_id"
+    t.integer  "cart_id"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "count"
+  end
+
+  create_table "carts", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "flag",       default: 0
   end
 
@@ -39,6 +55,14 @@ ActiveRecord::Schema.define(version: 20150204092922) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "viewimages", force: true do |t|
+    t.string   "image"
+    t.string   "title"
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

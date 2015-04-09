@@ -1,7 +1,7 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: [:show, :edit, :destroy]
   def new
-  	@buyer = Buyer.new
+  	@buyer = Buyer.new(:user_id => current_user.id)
   end
 
   def index
@@ -14,8 +14,12 @@ class BuyersController < ApplicationController
 
     respond_to do |format|
       if @buyer.save
-        format.html { redirect_to @buyer, notice: '创建成功!' }
-        format.json { render :show, status: :created, location: @buyer }
+        if params[:userurl]
+          format.html { redirect_to usercar_path(@buyer.id) }
+        else
+          format.html { redirect_to @buyer, notice: '创建成功!' }
+          format.json { render :show, status: :created, location: @buyer }
+        end
       else
         format.html { render :new }
         format.json { render json: @buyer.errors, status: :unprocessable_entity }
@@ -51,6 +55,8 @@ class BuyersController < ApplicationController
     end
     redirect_to :order_audit
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

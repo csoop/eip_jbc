@@ -1,0 +1,235 @@
+<%= render 'shared/userheader' %>
+	<div class="content details-page">
+		<!---start-product-details-->
+		<div class="product-details">
+			<div class="wrap">
+				<ul class="product-head">
+					<li><a href="index.html">主 页</a> <span>::</span></li>
+					<li class="active-page"><a href="#">产品选购</a></li>
+					<div class="clear"> </div>
+				</ul>
+			<!--details-product-slider-->
+			<!-- Include the Etalage files -->
+				<link rel="stylesheet" href="uservendor/css/etalage.css">
+				<script src="uservendor/js/jquery.etalage.min.js"></script>
+			<!-- Include the Etalage files -->
+			<script>
+					jQuery(document).ready(function($){
+		
+						$('#etalage').etalage({
+							thumb_image_width: 300,
+							thumb_image_height: 400,
+							source_image_width: 900,
+							source_image_height: 1000,
+							show_hint: true,
+							click_callback: function(image_anchor, instance_id){
+								alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+							}
+						});
+						// This is for the dropdown list example:
+						$('.dropdownlist').change(function(){
+							etalage_show( $(this).find('option:selected').attr('class') );
+						});
+
+				});
+			</script>
+			<!--//details-product-slider-->
+			<div class="details-left" style="background:#fdfdfd;">
+				<div class="details-left-slider">
+					<ul id="etalage">
+					<% @reception_cart.pictures.each do |i| %>
+						<li>
+							<!-- <a href="optionallink.html"> -->
+							<%= image_tag i.image.url,  class: "etalage_thumb_image" %>
+							<%= image_tag i.image.url,  class: "etalage_source_image" %>
+							<!-- </a> -->
+						</li>
+					<% end %>
+					</ul>
+				</div>
+				<div class="details-left-info">
+					<div class="details-right-head">
+					<h1><%= @reception_cart.ppname %></h1><h6><%= @reception_cart.styleid %><h6>
+					<p class="product-detail-info"><%= @reception_cart.fabric %></p>
+					<a class="learn-more" href="/order"><h3>更多货品</h3></a>
+					<div class="product-more-details">
+						<ul class="price-avl">
+						<li class="price"><label>￥145.72元</label></li>
+							<!-- <li class="price"><span>￥153.39元</span><label>￥145.72元</label></li> -->
+							<!-- <li class="stock"><i>有现货</i></li> -->
+							<div class="clear"> </div>
+						</ul>
+
+						<%= form_tag ('/cart_items') %>
+						<ul class="product-colors">
+							<h3>颜色分类 :</h3>
+							<%= hidden_field_tag 'buyer_id', @reception_cart.id %>
+							<div data-toggle="buttons" class="btn-group">
+							<% @reception_cart.color.each do |c| %>
+							<!-- 
+							<%= '<label class="btn dcolor2"><input type="radio" name="color" value="天蓝" /></label>'.html_safe if c == '天蓝' %>
+						
+							<%= '<label class="btn dcolor2">'.html_safe if c == '天蓝'%>
+							<%= radio_button_tag 'color', c if c == '天蓝' %>
+							<%= '</label>'.html_safe %>
+							 -->
+							<% case c %>
+							<% when '白' %>
+								<label class="btn dcolor1">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '天蓝' %>
+								<label class="btn dcolor2">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '梅红' %>
+								<label class="btn dcolor3">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '浅绿' %>
+								<label class="btn dcolor4">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '淡黄' %>
+								<label class="btn dcolor5">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '黑' %>
+								<label class="btn dcolor6">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '深紫' %>
+								<label class="btn dcolor7">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '淡黄' %>
+								<label class="btn dcolor8">
+								<%= radio_button_tag 'color', c %>
+								</label>						
+							<% end %>
+							<% end %>
+							</div>
+							<div class="clear"> </div>
+							
+						</ul>
+						<!-- <ul class="product-sizes">
+							<h3>尺码选择 :</h3>
+							<select>
+								<option>38</option>
+								<option>39</option>
+								<option>40</option>
+								<option>41</option>
+								<option>42</option>
+								<option>43</option>
+							</select>
+						</ul>
+						<ul class="prosuct-qty">
+							<span>数量 :</span>
+							<input type="text" value="10" size="5">
+						</ul> -->
+						<%= hidden_field_tag 'count', '0' %>
+						<%= submit_tag '放入订单车' %>
+						<!-- 
+						<%=button_to '放入订单车', cart_items_path(:buyer_id=> @reception_cart.id, :color => @color )%> -->
+						<!-- <ul class="product-share">
+							<h3>All so Share On</h3>
+							<ul>
+								<li><a class="share-face" href="#"><span> </span> </a></li>
+								<li><a class="share-twitter" href="#"><span> </span> </a></li>
+								<li><a class="share-google" href="#"><span> </span> </a></li>
+								<li><a class="share-rss" href="#"><span> </span> </a></li>
+								<div class="clear"> </div>
+							</ul>
+						</ul> -->
+					</div>
+				</div>
+				</div>
+				<div class="clear"> </div>
+			</div>
+			<div class="details-right">
+	                <div>
+	                	<h3> 产品详情</h3>
+	                    <p>品牌: YEARCON/意尔康鞋头款式: 圆头闭合方式: 系带鞋底材质: 橡胶鞋面材质: 头层牛皮（除牛反绒）帮面材质: 牛皮材质工艺: 纳帕纹鞋面内里材质: 皮制作工艺: 胶粘鞋</p>
+	               		<p>风格: 休闲细分风格: 日常休闲场合: 日常季节: 春秋颜色分类: 黑色 黄色 蓝色尺码: 38 39 40 41 42 43 44价格区间: 501-1000元款式: 休闲皮鞋适用对象: 青年</p>
+	                </div>
+			</div>
+			<div class="clear"> </div>
+		</div>
+		<!----product-rewies---->
+		<div class="product-reviwes">
+			<div class="wrap">
+			<!--vertical Tabs-script-->
+			<!---responsive-tabs---->
+				<script src="uservendor/js/easyResponsiveTabs.js" type="text/javascript"></script>
+				<script type="text/javascript">
+					$(document).ready(function () {
+						 $('#horizontalTab').easyResponsiveTabs({
+								type: 'default', //Types: default, vertical, accordion           
+								width: 'auto', //auto or any width like 600px
+								fit: true,   // 100% fit in a container
+								closed: 'accordion', // Start closed if in accordion view
+								activate: function(event) { // Callback function if tab is switched
+								var $tab = $(this);
+								var $info = $('#tabInfo');
+								var $name = $('span', $info);
+									$name.text($tab.text());
+									$info.show();
+								}
+							});
+												
+						 $('#verticalTab').easyResponsiveTabs({
+								type: 'vertical',
+								width: 'auto',
+								fit: true
+							 });
+					 });
+				</script>
+			<!---//responsive-tabs---->
+			<!--//vertical Tabs-script-->
+			<!--vertical Tabs-->
+   		<div class="clear"> </div>
+	</div>
+	<!---- start-bottom-grids---->
+	<div class="bottom-grids">
+		<div class="bottom-bottom-grids">
+			<div class="wrap">
+				<div class="bottom-bottom-grid">
+					<h6>金佰川网站</h6>
+					<p>海纳百川、鞋行天下，欢迎进入金佰川集团网站。</p>
+					<a class="learn-more" href="#">点击进入网站</a>
+				</div>
+				<div class="bottom-bottom-grid">
+					<h6>金佰川BBS</h6>
+					<p>传播时尚理念，缔造精彩生活。</p>
+					<a class="learn-more" href="#">点击进入BBS</a>
+				</div>
+				<div class="bottom-bottom-grid last-bottom-bottom-grid">
+					<h6>金佰川拇指店</h6>
+					<p>手机买鞋，拇指动一动，潮鞋立马带回家</p>
+					<a class="learn-more" href="#">扫扫二维码</a>
+				</div>
+				<div class="clear"> </div>
+			</div>
+		</div>
+	</div>
+	<!---- //End-bottom-grids---->
+	<!--- //End-content---->
+	<!---start-footer---->
+
+<%= render 'shared/userfooter' %>
+
+	<!---//End-wrap---->
+	
+<script type="text/javascript">
+    function getColor(){
+		var value="";
+		var radio=document.getElementsByName("color");
+		for(var i=0;i<radio.length;i++){
+		    if(radio[i].checked==true){
+		      value=radio[i].value;
+		      break;
+		    }
+		}
+		return value;
+	} 
+</script>

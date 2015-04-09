@@ -12,7 +12,12 @@ class UsersController < ApplicationController
         cookies[:token] = user.token
       end
       flash.notice = "登录成功！"
-      redirect_to :root
+      # 判断是否门店登陆
+      if params[:userlogin]
+        redirect_to '/userweb'
+      else
+        redirect_to :root
+      end
     else
       flash.notice = "用户名或密码错误！"
       redirect_to :login

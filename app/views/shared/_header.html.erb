@@ -275,11 +275,12 @@
               <li><a href="/order_audit">款式发布</a></li>
               <li><a href="invoice.html">历史订货</a></li>
               <li><a href="profile.html">历史资料</a></li>
+              <li><%=link_to '买手推荐首页大图',controller: 'viewimages',action: 'index' %></li>
             </ul>
           </li> 
-          <li class="has_sub"><a href="#"><i class="icon-bar-chart"></i> 订单管理 <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
+          <li class="has_sub"><a href="#" <%= "class='open'".html_safe if @nav == 'order' %> ><i class="icon-bar-chart"></i> 订单管理 <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
             <ul>
-              <li><a href="media.html">媒体</a></li>
+              <li><a href="/orders">审核下单</a></li>
             </ul>
           </li>   
           <li class="has_sub"><a href="#" <%= "class='open'".html_safe if @nav == 'register' %> ><i class="icon-cogs"></i> 管理页面  <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
