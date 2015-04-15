@@ -10,17 +10,17 @@
 				</ul>
 			<!--details-product-slider-->
 			<!-- Include the Etalage files -->
-				<link rel="stylesheet" href="uservendor/css/etalage.css">
-				<script src="uservendor/js/jquery.etalage.min.js"></script>
+				<link rel="stylesheet" href="/uservendor/css/etalage.css">
+				<script src="/uservendor/js/jquery.etalage.min.js"></script>
 			<!-- Include the Etalage files -->
 			<script>
 					jQuery(document).ready(function($){
 		
 						$('#etalage').etalage({
 							thumb_image_width: 300,
-							thumb_image_height: 400,
+							thumb_image_height: 200,
 							source_image_width: 900,
-							source_image_height: 1000,
+							source_image_height: 540,
 							show_hint: true,
 							click_callback: function(image_anchor, instance_id){
 								alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
@@ -54,7 +54,7 @@
 					<a class="learn-more" href="/order"><h3>更多货品</h3></a>
 					<div class="product-more-details">
 						<ul class="price-avl">
-						<li class="price"><label>￥145.72元</label></li>
+						<li class="price"><label>￥<%= @reception_cart.price %>元</label></li>
 							<!-- <li class="price"><span>￥153.39元</span><label>￥145.72元</label></li> -->
 							<!-- <li class="stock"><i>有现货</i></li> -->
 							<div class="clear"> </div>

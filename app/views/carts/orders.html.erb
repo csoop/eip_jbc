@@ -38,6 +38,7 @@
                     <th class="hidden-480">款式编号</th>
                     <th class="hidden-480">色样</th>
                     <th class="hidden-480">面料</th>
+                    <th class="hidden-480">价格</th>
                     <th>
                       <i class="icon-time bigger-110 hidden-480"></i>
                       提交时间
@@ -52,6 +53,7 @@
 
                   <tbody>
                   <% @orders.each do |f| %>
+                    <% f.cart_items.each do |t| %>
 
                       <tr>
                         <td>
@@ -59,10 +61,10 @@
                             <ul class="ace-thumbnails">
 
                                   <li>
-                                    <% (f.cart_item.buyer.pictures).each  do |b| %>
-                                    <a href="<%= b.image.url %>" data-rel="<%= f.buyer.id %>">
+                                    <% (t.buyer.pictures).each  do |b| %>
+                                    <a href="<%= b.image.url %>" data-rel="<%= t.buyer.id %>">
                                     <% end %>
-                                      <%= image_tag f.cart_item.buyer.pictures.last.image.url(:thumb) %> 
+                                      <%= image_tag t.buyer.pictures.last.image.url(:thumb) %> 
                                     </a>
                                   </li>
 
@@ -70,36 +72,29 @@
                           </div>
                         </td>
                         <td class="hidden-480">
-                          <%= f.cart_item.buyer.ppname%>
+                          <%= t.buyer.ppname%>
                         </td>
                         <td class="hidden-480">
-                          <%= f.cart_item.buyer.styleid%>
+                          <%= t.buyer.styleid%>
                         </td>
                         <td class="hidden-480">
-                          <%= f.cart_item.color%>
+                          <%= t.color%>
                         </td>
                         <td class="hidden-480">
-                          <%= f.cart_item.buyer.fabric%>
+                          <%= t.buyer.fabric%>
                         </td>
-                        <td><%= f.created_at.to_date %></td>
-                        <td><%= User.find(f.user_id).name %></td>
-                        <td class="center"><%= text_field_tag 'count', f.cart_item.count %></td>
                         <td class="hidden-480">
-                          <% if f.flag==0%>
-                              <span class="label label-sm label-inverse arrowed-in">最新订单</span>
-                          <% end%>
-                          <% if f.flag==1%>
-                              <span class="label label-sm label-success">同意</span>
-                          <% end%>
-                          <% if f.flag==2%>
-                              <span class="label label-sm label-warning">不同意</span>
-                          <% end%>
+                          <%= t.buyer.price%>
+                        </td>
+                        <td><%= t.created_at.to_date %></td>
+                        <td><%= f.user.name %></td>
+                        <td class="center"><%= text_field_tag 'count', t.count, style: "color:green; width: 50%;" %></td>
+                        <td class="hidden-480">
+                          <%= '<span class="label label-sm label-info">最新订单</span>'.html_safe if f.flag == 1 %>
                         </td>
 
                         <td>
                           <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                            <%= link_to '<i class="icon-ok-circle bigger-130"></i>'.html_safe,edit_buyer_path(f,:bj=>1),class:"green"%>
-                            <%= link_to '<i class="icon-remove-circle bigger-130"></i>'.html_safe,edit_buyer_path(f),class:"yellow"%>
                             <%= link_to '<i class="icon-trash bigger-130"></i>'.html_safe,f, method: :delete, data: { confirm: 'Are you sure?' },class:"red" %>
                           </div>
                           <div class="visible-xs visible-sm hidden-md hidden-lg">
@@ -110,20 +105,24 @@
 
                               <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
                                 <li>
-                                  <%= link_to ' <span class="green"><i class="icon-ok-circle bigger-130"></i></span>'.html_safe,edit_buyer_path(f,:bj=>1),class:"tooltip-info"%>
-                                </li>
-
-                                <li>
-                                  <%= link_to ' <span class="yellow"><i class="icon-remove-circle bigger-130"></i></span>'.html_safe,edit_buyer_path(f),class:"tooltip-error"%>
-                                </li>
-                                <li>
-                                  <%= link_to '<span class="red"><i class="icon-trash bigger-120"></i></span>'.html_safe,f, method: :delete, data: { confirm: 'Are you sure?' },class:"tooltip-error" %>
+                                  <%= link_to '<span class="red"><i class="icon-trash bigger-120"></i></span>'.html_safe,t, method: :delete, data: { confirm: 'Are you sure?' },class:"tooltip-error" %>
                                 </li>
                               </ul>
                             </div>
                           </div>
                         </td>
                       </tr>
+                      <% end %>
+                      <tfoot>
+                      <tr>
+                      <td colspan="11">
+                      <div class="col-lg-6 col-lg-offset-5">
+                      <%= submit_tag '下单', :class => "btn btn-success" %>
+                         <%= link_to " Excel导出", exports_path(format: "xlsx") %>
+                      </div>
+                      </td>
+                      </tr>
+                      <tfoot>
                   <% end %>
                   </tbody>
                 </table>
@@ -195,7 +194,9 @@
               }
           };
           <% @orders.each do |y| %>
-          $('.ace-thumbnails [data-rel="<%= y.buyer.id %>"]').colorbox(colorbox_params);
+          <% y.cart_items.each do |z| %>
+          $('.ace-thumbnails [data-rel="<%= z.buyer.id %>"]').colorbox(colorbox_params);
+          <% end %>
           <% end %>
           $("#cboxLoadingGraphic").append("<i class='icon-spinner orange'></i>");//let's add a custom loading icon
 
@@ -240,7 +241,7 @@
       });
 
 
-          $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+          // $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
           function tooltip_placement(context, source) {
               var $source = $(source);
               var $parent = $source.closest('table')

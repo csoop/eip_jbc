@@ -20,6 +20,7 @@
 											<th><h5>款式编码<h5></th>
 											<th><h5>颜色<h5></th>	
 											<th><h5>面料<h5></th>
+											<th><h5>价格<h5></th>
 											<th><h5>数量<h5></th>
 											<th><h5>操作<h5></th>
 										</tr>
@@ -35,6 +36,7 @@
 											<td><%= a.buyer.styleid %></td>		
 											<td><%= a.color %></td>
 											<td><%= a.buyer.fabric %></td>
+											<td><%= a.buyer.price %></td>
 											<td style="width:10%;"><%= text_field_tag a.id, a.count,style: "border: 2px solid #E45D5D;" %></td>
 											<td style="width:10%;">
 											<%= link_to '删除', a, method: :delete, data: { confirm: "你确定要删除此条货品吗?" } %>

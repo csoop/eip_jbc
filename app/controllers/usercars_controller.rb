@@ -1,7 +1,12 @@
 class UsercarsController < ApplicationController
-  before_action :cart_count
   before_action :set_buyer, only: [:show]
+  before_action :cart_ture, except: [:login]
   def index
+    cart = Cart.find_by(:flag => 0, :user_id => current_user)
+    if cart
+      session[:cart_id]=cart.id
+      @cart_item = cart.cart_items.all
+    end
     @viewimages = Viewimage.all
   	@reception_index = Buyer.all.order("created_at desc").limit(6)
   end
@@ -19,6 +24,10 @@ class UsercarsController < ApplicationController
   end
 
   def upload
+    if current_cart
+      cart = current_cart
+      @cart_item = cart.cart_items.all
+    end
     @buyer = Buyer.new(:user_id => current_user.id)
   end
 
@@ -31,6 +40,10 @@ class UsercarsController < ApplicationController
   end
 
   def inspect
+    if current_cart
+      cart = current_cart
+      @cart_item = cart.cart_items.all
+    end
     #cart = current_cart
     #@cart_item = cart.cart_items.all
   end
@@ -44,18 +57,26 @@ class UsercarsController < ApplicationController
   end
 
   def detail
+    if current_cart
+      cart = current_cart
+      @cart_item = cart.cart_items.all
+    end
     @reception_cart=Buyer.find_by_id(params[:buyer])
   end
 
   def logout
     cookies.delete(:token)
+    session[:cart_id] = nil
     redirect_to :userlogin
   end
 
   private
-    def cart_count
-      cart = current_cart
-      @cart_item = cart.cart_items.all
+
+    def cart_ture
+      if current_cart
+        cart = current_cart
+        @cart_item = cart.cart_items.all
+      end
     end
 
     def set_buyer

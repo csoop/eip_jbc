@@ -48,7 +48,7 @@
                             <h3 class="lighter block green">请输入准确的商品信息</h3>
                             <%= form_for (@buyer), html: {class: "form-horizontal"} do |f| %>
                             <%= f.hidden_field :user_id%>
-                              <div class="form-group has-warning">
+                              <div class="form-group has-info">
                                 <label for="inputError" class="col-xs-12 col-sm-3 control-label no-padding-right" >品牌名称</label>
 
                                 <div class="col-xs-12 col-sm-5">
@@ -58,12 +58,22 @@
                                 </div>
                               </div>
 
-                              <div class="form-group has-warning">
+                              <div class="form-group has-info">
                                 <label for="inputError" class="col-xs-12 col-sm-3 control-label col-md-3 no-padding-right">货品款号</label>
 
                                 <div class="col-xs-12 col-sm-5">
                                   <span class="block input-icon input-icon-right">
                                     <%= f.text_field :styleid, class: "width-100" %>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div class="form-group has-info">
+                                <label for="inputError" class="col-xs-12 col-sm-3 control-label col-md-3 no-padding-right">价格(¥)</label>
+
+                                <div class="col-xs-12 col-sm-5">
+                                  <span class="block input-icon input-icon-right">
+                                    <%= f.text_field :price, class: "width-100" %>
                                   </span>
                                 </div>
                               </div>

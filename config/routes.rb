@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/detail' => 'usercars#detail', :as => "detail"
   get '/orders' => 'carts#orders'
   get '/order' => 'usercars#order'
+  get '/exports' => 'carts#exports', :as => "exports"
   get '/inspect' => 'usercars#inspect' 
   get '/upload' => 'usercars#upload'
   get '/usercars/:id' => 'usercars#show', :as => "usercar"

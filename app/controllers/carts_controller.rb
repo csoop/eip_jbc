@@ -19,7 +19,21 @@ class CartsController < ApplicationController
   end
 
   def orders
-    @orders = Cart.where(:flag => 1).order(created_at: :desc)
+    @orders = Cart.all.where(:flag => 1).order(created_at: :desc)
+  end
+
+  def exports
+    @exports = Array.new
+    @order = Cart.all.where(:flag => 1).order(created_at: :desc)
+    @order.each do |export|
+      export.cart_items.each do |e|
+        @exports << e
+      end
+    end
+    respond_to do |format|
+      format.html
+      format.xlsx {render xlsx: 'exports',filename: "exports-#{Time.now.to_date}.xlsx"}
+    end
   end
 
   private

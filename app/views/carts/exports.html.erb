@@ -1,0 +1,37 @@
+
+<table>
+  <thead>
+  <tr>
+    <th>品牌</th>
+    <th>款式编号</th>
+    <th>色样</th>
+    <th>面料</th>
+    <th>提交门店</th>
+    <th>提交时间</th>
+    <th>
+      数量
+    </th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @exports.each do |t| %>
+      <tr>
+        <td class="hidden-480">
+          <%= t.buyer.ppname%>
+        </td>
+        <td class="hidden-480">
+          <%= t.buyer.styleid%>
+        </td>
+        <td>
+          <%= t.color%>
+        </td>
+        <td class="hidden-480">
+          <%= t.buyer.fabric%>
+        </td>
+        <td><%= t.created_at.to_date %></td>
+        <td><%= t.count %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

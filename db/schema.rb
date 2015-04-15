@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407030153) do
+ActiveRecord::Schema.define(version: 20150414075139) do
 
   create_table "buyers", force: true do |t|
     t.string   "ppname"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150407030153) do
     t.datetime "updated_at"
     t.string   "image"
     t.integer  "flag",       default: 0
+    t.integer  "price"
   end
 
   create_table "cart_items", force: true do |t|

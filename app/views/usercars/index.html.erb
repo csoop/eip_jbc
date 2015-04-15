@@ -74,7 +74,7 @@
 								</div>
 							</div> -->
 							<div class="product-pic">
-								<a href="#"><%= image_tag f.pictures.last.image.url(:thumbmid)  %></a>
+								<a href="#"><%= image_tag f.pictures.first.image.url(:thumbmid)  %></a>
 								<p>
 								<a href="#"><%=f.ppname%><small> <%=f.fabric%></small> <small><%=f.styleid%></small></a>
 								<span>Men's Firm-Ground Football Boot</span>
@@ -85,7 +85,7 @@
 									<%=link_to "详情", buyer: f.id, action:'detail' %>
 								</div>
 								<div class="product-info-price">
-									¥ 380
+									¥ <%= f.price %>
 								</div>
 								<div class="clear"> </div>
 							</div>
