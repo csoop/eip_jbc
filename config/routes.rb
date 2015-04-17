@@ -32,7 +32,10 @@ Rails.application.routes.draw do
     resources :pictures
   end
 
-  post '/cart_update' => "cart_items#update", :as => "cart_update"
+  # update多个操作使用了post
+  # post '/cart_update' => "cart_items#update", :as => "cart_update"
+  post '/size_groups' => "size_groups#update", :as => "size_update"
+
   resources :carts
   resources :cart_items
 

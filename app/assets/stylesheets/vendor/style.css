@@ -560,6 +560,14 @@ header .logo{
 	margin-bottom: 10px;
 	padding-left: 10px;
 }
+header .logo span {
+  margin-left: 40px;
+  width: 38px;
+  height: 38px;
+  display: inline-block;
+  /* background: url(../images/image-sprit.png) no-repeat -57px -3px; */
+  background: url(/img/barmian.png) no-repeat;
+}
 
 header .logo h1 a, header .logo h1 a:visited, header .logo h1 a:hover{
 	font-size: 35px;

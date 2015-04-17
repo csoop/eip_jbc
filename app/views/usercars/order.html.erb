@@ -27,6 +27,7 @@
 												<th><h5>颜色<h5></th>	
 												<th><h5>面料<h5></th>
 												<th><h5>价格<h5></th>
+												<th><h5>品类<h5></th>
 												<th><h5>动作<h5></th>
 											</tr>
 										</thead>
@@ -42,6 +43,7 @@
 											<td><%=a.color %></td>
 											<td><%=a.fabric %></td>
 											<td>¥：<%=a.price %></td>
+											<td><%=a.category %></td>
 											<td><%=link_to '查看详情', buyer: a.id, action:'detail'  %></td>
 
 										</tr> 								

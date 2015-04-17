@@ -44,6 +44,7 @@
                       提交时间
                     </th>
                     <th>提交门店</th>
+                    <th>尺码</th>
                     <th class="center">数量</th>
                     <th class="hidden-480">状态</th>
 
@@ -52,11 +53,12 @@
                   </thead>
 
                   <tbody>
+                  <%= form_tag '/size_groups' do %>
                   <% @orders.each do |f| %>
                     <% f.cart_items.each do |t| %>
-
+                    <% @size_count = t.size_groups.size %>
                       <tr>
-                        <td>
+                        <td rowspan="<%= @size_count %>">
                           <div class="row-fluid">
                             <ul class="ace-thumbnails">
 
@@ -71,29 +73,31 @@
                             </ul>
                           </div>
                         </td>
-                        <td class="hidden-480">
+                        <td rowspan="<%= @size_count %>" class="hidden-480">
                           <%= t.buyer.ppname%>
                         </td>
-                        <td class="hidden-480">
+                        <td rowspan="<%= @size_count %>" class="hidden-480">
                           <%= t.buyer.styleid%>
                         </td>
-                        <td class="hidden-480">
+                        <td rowspan="<%= @size_count %>" class="hidden-480">
                           <%= t.color%>
                         </td>
-                        <td class="hidden-480">
+                        <td rowspan="<%= @size_count %>" class="hidden-480">
                           <%= t.buyer.fabric%>
                         </td>
-                        <td class="hidden-480">
+                        <td rowspan="<%= @size_count %>" class="hidden-480">
                           <%= t.buyer.price%>
                         </td>
-                        <td><%= t.created_at.to_date %></td>
-                        <td><%= f.user.name %></td>
-                        <td class="center"><%= text_field_tag 'count', t.count, style: "color:green; width: 50%;" %></td>
-                        <td class="hidden-480">
+                        <td rowspan="<%= @size_count %>"><%= t.created_at.to_date %></td>
+                        <td rowspan="<%= @size_count %>"><%= f.user.name %></td>
+                        <% @one = t.size_groups.first %>
+                        <td><%=  @one.sizecode %></td>
+                        <td class="center"><%= text_field_tag @one.id, @one.count, style: "color:green; width: 50%;" %></td>
+                        <td rowspan="<%= @size_count %>" class="hidden-480">
                           <%= '<span class="label label-sm label-info">最新订单</span>'.html_safe if f.flag == 1 %>
                         </td>
 
-                        <td>
+                        <td rowspan="<%= @size_count %>">
                           <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
                             <%= link_to '<i class="icon-trash bigger-130"></i>'.html_safe,f, method: :delete, data: { confirm: 'Are you sure?' },class:"red" %>
                           </div>
@@ -112,6 +116,15 @@
                           </div>
                         </td>
                       </tr>
+                      <% digit = 1 %>
+                      <% while digit < t.size_groups.size do %>
+                      <tr>
+                      <% @list = t.size_groups[digit] %>
+                        <td><%= @list.sizecode %></td>
+                        <td style="width:10%;"><%= text_field_tag @list.id, @list.count, style: "border: 2px solid #E45D5D;" %></td>
+                      </tr>
+                      <% digit += 1 %>
+                      <% end %>
                       <% end %>
                       <tfoot>
                       <tr>

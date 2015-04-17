@@ -21,29 +21,45 @@
 											<th><h5>颜色<h5></th>	
 											<th><h5>面料<h5></th>
 											<th><h5>价格<h5></th>
+											<th><h5>尺码<h5></th>
 											<th><h5>数量<h5></th>
 											<th><h5>操作<h5></th>
 										</tr>
-									</thead>										
-									<tbody id="myTableProduct">	
-									<%= form_tag '/cart_update' do %>
-									<% @cart_item.each do |a| %>
-										<tr>
-											<td style="width:15%; height:60px;">
-											<%= image_tag a.buyer.pictures.last.image.url(:thumb) %>
-											</td>
-											<td><%= a.buyer.ppname %></td>
-											<td><%= a.buyer.styleid %></td>		
-											<td><%= a.color %></td>
-											<td><%= a.buyer.fabric %></td>
-											<td><%= a.buyer.price %></td>
-											<td style="width:10%;"><%= text_field_tag a.id, a.count,style: "border: 2px solid #E45D5D;" %></td>
-											<td style="width:10%;">
-											<%= link_to '删除', a, method: :delete, data: { confirm: "你确定要删除此条货品吗?" } %>
-											</td>
-										</tr>
-									<% end %>
-									</tbody>
+									</thead>	
+
+<tbody id="myTableProduct">	
+	<%= form_tag '/size_groups' do %>
+	<% @cart_item.each do |a| %>
+		<%= hidden_field_tag 'cart_item_id', a.id %>
+		<% @size_count = a.size_groups.size %>
+		<tr>
+			<td rowspan="<%= @size_count %>" style="width:15%; height:60px;">
+			<%= image_tag a.buyer.pictures.last.image.url(:thumb) %>
+			</td>
+			<td rowspan="<%= @size_count %>"><%= a.buyer.ppname %></td>
+			<td rowspan="<%= @size_count %>"><%= a.buyer.styleid %></td>	
+			<td rowspan="<%= @size_count %>"><%= a.color %></td>
+			<td rowspan="<%= @size_count %>"><%= a.buyer.fabric %></td>
+			<td rowspan="<%= @size_count %>"><%= a.buyer.price %></td>
+			<% @one = a.size_groups.first %>
+			<td><%=  @one.sizecode %></td>
+			<td style="width:10%;"><%= text_field_tag @one.id, @one.count, style: "border: 2px solid #E45D5D;" %></td>
+			<td rowspan="<%= @size_count %>" style="width:10%;">
+			<%= link_to '删除', a, method: :delete, data: { confirm: "你确定要删除此条货品吗?" } %>
+			</td>
+		</tr>
+		<% digit = 1 %>
+		<% while digit < a.size_groups.size do %>
+		<tr>
+		<% @list = a.size_groups[digit] %>
+			<td><%= @list.sizecode %></td>
+			<td style="width:10%;"><%= text_field_tag @list.id, @list.count, style: "border: 2px solid #E45D5D;" %></td>
+		</tr>
+		<% digit += 1 %>
+		<% end %>
+	<% end %>
+</tbody>
+
 								</table>   			
 						</div>
 						<div id="uploadready" style="border-radius: 10px;">											

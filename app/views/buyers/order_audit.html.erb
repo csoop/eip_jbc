@@ -38,6 +38,7 @@
                     <th class="hidden-480">面料</th>
                     <th class="hidden-480">品牌</th>
                     <th class="hidden-480">款式编号</th>
+                    <th class="hidden-480">品类</th>
                     <th>
                       <i class="icon-time bigger-110 hidden-480"></i>
                       上传时间
@@ -88,6 +89,9 @@
                         <td class="hidden-480">
                           <%= f.styleid%>
                         </td>
+                        <td class="hidden-480">
+                          <%= f.category%>
+                        </td>
                         <td><%= f.created_at.to_date %></td>
 
                         <td class="hidden-480">
@@ -98,7 +102,7 @@
                               <span class="label label-sm label-success">通过</span>
                           <% end%>
                           <% if f.flag==2%>
-                              <span class="label label-sm label-warning">未通过</span>
+                              <span class="label label-sm label-warning">下架</span>
                           <% end%>
                         </td>
 
