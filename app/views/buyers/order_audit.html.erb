@@ -209,10 +209,11 @@
           <% end %>
           $("#cboxLoadingGraphic").append("<i class='icon-spinner orange'></i>");//let's add a custom loading icon
 
+          // null, 影响datatable是否能显示
           var oTable1 = $('#sample-table-2').dataTable( {
               "aoColumns": [
                   { "bSortable": false },
-                  null, null,null, null, null,null, null, null,
+                  null, null,null, null, null,null, null, null, null,
                   { "bSortable": false }
               ] } );
 

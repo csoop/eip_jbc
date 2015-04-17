@@ -6,26 +6,32 @@ class CartItemsController < ApplicationController
 
   # 判断buyer的品类（即尺码组）来创建不同的SizeGroup
 	def create
-		@cart=current_cart
-    buyer=Buyer.find(params[:buyer_id])
-    @cart_item = @cart.add_buyer(cart_item_params)
-    if @cart_item
-      @cart_item.save
-      if @cart_item.buyer.category == '男鞋'
-        (37..44).each do |num|
-          @cart_item.size_groups.create( :sizecode => num )
-        end
-      elsif @cart_item.buyer.category == '女鞋'
-        (34..39).each do |num|
-          @cart_item.size_groups.create( :sizecode => num )
-        end
-      else
-        (36..44).each do |num|
-          @cart_item.size_groups.create( :sizecode => num*10 )
+    if params[:color] != nil
+  		@cart=current_cart
+      buyer=Buyer.find(params[:buyer_id])
+      @cart_item = @cart.add_buyer(cart_item_params)
+      if @cart_item
+        @cart_item.save
+        if @cart_item.buyer.category == '男鞋'
+          (37..44).each do |num|
+            @cart_item.size_groups.create( :sizecode => num )
+          end
+        elsif @cart_item.buyer.category == '女鞋'
+          (34..39).each do |num|
+            @cart_item.size_groups.create( :sizecode => num )
+          end
+        else
+          (36..44).each do |num|
+            @cart_item.size_groups.create( :sizecode => num*10 )
+          end
         end
       end
+      flash.notice = "添加成功"
+      redirect_to controller: "usercars", action: "detail", buyer: buyer.id
+    else
+      flash.notice = "未选择颜色"
+      redirect_to controller: "usercars", action: "detail", buyer: buyer.id
     end
-    redirect_to controller: "usercars", action: "detail", buyer: buyer.id
 	end
 
   # 只针对颜色更新数量的update方法（size_groups 中为尺码的数量）

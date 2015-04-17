@@ -1396,7 +1396,7 @@ h2.resp-accordion:first-child {
 	background:#F3349E;
 }
 .dcolor4 {
-	background:#93D52D;
+	background:#98FB98;
 }
 .dcolor5 {
 	background:#FD9812;
@@ -1410,6 +1410,29 @@ h2.resp-accordion:first-child {
 .dcolor8 {
 	background:#F6EF04;
 }
+.dcolor9 {
+	background:#F5F5F5;
+}
+.dcolor10 {
+	background:#8B4513;
+}
+.dcolor11 {
+	background:#32CD32;
+}
+.dcolor12 {
+	background:#FFD700;
+}
+.dcolor13 {
+	background:#FFC0CB;
+}
+.dcolor14 {
+	background:#FFDEAD;
+}
+/* 卡其  */
+.dcolor15 {
+	background:#FFE4B5;
+}
+
 .product-colors h3,.prosuct-qty span,.product-sizes h3{
 	color: #08080B;
 	font-weight: 700;

@@ -8,7 +8,7 @@ class UsercarsController < ApplicationController
       @cart_item = cart.cart_items.all
     end
     @viewimages = Viewimage.all
-  	@reception_index = Buyer.all.order("created_at desc").limit(6)
+  	@reception_index = Buyer.all.where(:flag => 1).order("created_at desc").limit(6)
   end
 
   def login

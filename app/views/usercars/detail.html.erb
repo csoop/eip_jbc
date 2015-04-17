@@ -67,18 +67,42 @@
 							<div data-toggle="buttons" class="btn-group">
 							<% @reception_cart.color.each do |c| %>
 							<!-- 
-							<%= '<label class="btn dcolor2"><input type="radio" name="color" value="天蓝" /></label>'.html_safe if c == '天蓝' %>
+							<%= '<label class="btn dcolor2"><input type="radio" name="color" value="蓝色" /></label>'.html_safe if c == '天蓝' %>
 						
 							<%= '<label class="btn dcolor2">'.html_safe if c == '天蓝'%>
 							<%= radio_button_tag 'color', c if c == '天蓝' %>
 							<%= '</label>'.html_safe %>
 							 -->
 							<% case c %>
-							<% when '白' %>
+							<% when '棕色' %>
+								<label class="btn dcolor10" alt="棕色">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '绿色' %>
+								<label class="btn dcolor11">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '金色' %>
+								<label class="btn dcolor12">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '粉色' %>
+								<label class="btn dcolor13">
+								<%= radio_button_tag 'color', c %>
+								</label>
+							<% when '杏色' %>
+								<label class="btn dcolor14">
+								<%= radio_button_tag 'color', c %>
+								</label>		
+							<% when '银白' %>
+								<label class="btn dcolor9">
+								<%= radio_button_tag 'color', c %>
+								</label>		
+							<% when '米白' %>
 								<label class="btn dcolor1">
 								<%= radio_button_tag 'color', c %>
 								</label>
-							<% when '天蓝' %>
+							<% when '蓝色' %>
 								<label class="btn dcolor2">
 								<%= radio_button_tag 'color', c %>
 								</label>
@@ -94,7 +118,7 @@
 								<label class="btn dcolor5">
 								<%= radio_button_tag 'color', c %>
 								</label>
-							<% when '黑' %>
+							<% when '黑色' %>
 								<label class="btn dcolor6">
 								<%= radio_button_tag 'color', c %>
 								</label>

@@ -60,8 +60,8 @@
 							<!---caption-script---->
 							<!---//caption-script---->
   					<% @reception_index.each do|f|%>
-  					  <%if f.flag==1%>
-						<div onclick="location.href='＃';" class="product-grid fade <%= "last-grid".html_safe if @reception_index[2]== f ||@reception_index[5] == f %> "  >
+  					  
+						<div class="product-grid fade <%= "last-grid".html_safe if @reception_index[2] == f || @reception_index[5] == f %> "  >
 							<!-- <div class="product-grid-head">
 								<ul class="grid-social">
 									<li><a class="facebook" href="#"><span> </span></a></li>
@@ -93,7 +93,7 @@
 								<span> </span>
 							</div>
 						</div>
-						<% end %>
+						
 						<% end %>
 						<div class="clear"> </div>
 					</div>
