@@ -16,7 +16,7 @@ class UsercarsController < ApplicationController
   end
 
   def history
-  	
+  	@carts = Cart.all.where(:flag => 1).order(created_at: :desc)
   end
 
   def brand

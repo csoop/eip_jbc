@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/usercars/:id' => 'usercars#show', :as => "usercar"
   delete 'usercars_logout' => 'usercars#logout', :as => "usercars_logout"
   post 'usercars' => "usercars#create", :as => "usercars"
+  get '/history' => 'usercars#history', :as => "history"
 
   get '/order_audit' => 'buyers#order_audit', :as => "order_audit"
   resources :buyers, only: [:create, :show, :new, :edit, :destroy] do

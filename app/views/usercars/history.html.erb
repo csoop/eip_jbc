@@ -1,3 +1,4 @@
+<%= render 'shared/userheader' %>
 		<div class="content login-box">
 			<div class="login-main">
 				<div class="wrap" style="border-top: 1px solid #EEE;">
@@ -19,75 +20,56 @@
 
 											<table class="table table-striped table-bordered table-hover">
 												<thead style="background-color: #eee;">
-													<tr>
-														<th><h5>#</h5></th>
+													<tr style="height:30px;">
 														<th><h5>图片<h5></th>
-														<th><h5>订单名<h5></th>
-														<th><h5>订单号<h5></th>
 														<th><h5>品牌<h5></th>
-														<th><h5>颜色<h5></th>
+														<th><h5>款式编码<h5></th>
+														<th><h5>颜色<h5></th>	
 														<th><h5>面料<h5></th>
-														<th><h5>订货数量<h5></th>
-														<th><h5>查看内容<h5></th>
+														<th><h5>价格<h5></th>
+														<th><h5>尺码<h5></th>
+														<th><h5>数量<h5></th>
+														<th><h5>状态<h5></th>
 													</tr>
 												</thead>
-											<tbody>
-												<tr>
-													<td>1</td>
-													<td style="width:25%;">
-														<a href="images/photos/shoe_pic1.jpg" class="prettyPhoto[pp_gal]" ><img src="images/photos/shoe_pic1.jpg" width=“60” height="60" alt="图片1"></a>
-														<a href="images/photos/shoe_pic2.jpg" class="prettyPhoto[pp_gal]" ><img src="images/photos/shoe_pic2.jpg" width=“60” height="60" alt="图片1"></a>
-														<a href="images/photos/shoe_pic3.jpg" class="prettyPhoto[pp_gal]" ><img src="images/photos/shoe_pic3.jpg" width=“60” height="60" alt="图片1"></a>
-													</td>
-													<td>订单名</td>
-													<td>订单号</td>
-													<th>佰魅</th>	
-													<th>白</th>
-													<th>皮料</th>
-													<th>23</th>
-													<td><a href="images/photos/shoe_pic1.jpg" class="prettyPhoto[pp_gal]" title="产品信息">查看内容</a></td>				  
-												</tr> 
-												<tr>
-													<td>2</td>
-													<td style="width:25%;">
-														<a href="images/photos/shoe_pic2.jpg" class="prettyPhoto[pp_gal]" ><img src="images/photos/shoe_pic2.jpg" width=“60” height="60" alt="图片2"></a>
-														<a href="images/photos/shoe_pic3.jpg" class="prettyPhoto[pp_gal]" ><img src="images/photos/shoe_pic3.jpg" width=“60” height="60" alt="图片2"></a>
-														<a href="images/photos/shoe_pic4.jpg" class="prettyPhoto[pp_gal]" ><img src="images/photos/shoe_pic4.jpg" width=“60” height="60" alt="图片2"></a>
-													</td>
-													<td>订单名</td>
-													<td>订单号</td>
-													<th>佰魅</th>
-													<th>白</th>
-													<th>皮料</th>
-													<th>2</th>
-													<td><a href=" " target="_blank">查看内容</a></td>				  
-												</tr> 
-												<tr>
-													<td>3</td>
-													<td style="width:25%;">
-														<a href="images/photos/shoe_pic4.jpg" class="prettyPhoto[pp_gal]" ><img src="images/photos/shoe_pic4.jpg" width=“60” height="60" alt="图片3"></a>
-														<a href="images/photos/shoe_pic5.jpg" class="prettyPhoto[pp_gal]" ><img src="images/photos/shoe_pic5.jpg" width=“60” height="60" alt="图片3"></a>
-														<a href="images/photos/shoe_pic6.jpg" class="prettyPhoto[pp_gal]" ><img src="images/photos/shoe_pic6.jpg" width=“60” height="60" alt="图片3"></a>
-													</td>
-													<td>订单名</td>
-													<td>订单号</td>
-													<th>佰魅</th>
-													<th>白</th>
-													<th>皮料</th>
-													<th>2</th>
-													<td><a href=" " target="_blank">查看内容</a></td>				  
-												</tr> 
-									<tbody>
+<tbody id="myTableProduct">	
+	<% @carts.each do |f| %>
+	<% f.cart_items.each do |a| %>
+		<% size_count = a.size_groups.size %>
+		<tr>
+			<td rowspan="<%= size_count %>" style="width:15%; height:60px;">
+			<%= image_tag a.buyer.pictures.last.image.url(:thumb) %>
+			</td>
+			<td rowspan="<%= size_count %>"><%= a.buyer.ppname %></td>
+			<td rowspan="<%= size_count %>"><%= a.buyer.styleid %></td>	
+			<td rowspan="<%= size_count %>"><%= a.color %></td>
+			<td rowspan="<%= size_count %>"><%= a.buyer.fabric %></td>
+			<td rowspan="<%= size_count %>"><%= a.buyer.price %></td>
+			<% @one = a.size_groups.first %>
+			<td><%=  @one.sizecode %></td>
+			<td style="width:10%;"><%=  @one.count %></td>
+			<td rowspan="<%= size_count %>">
+      <%= '<span style="display: inline;font-size: 75%;font-weight: bold;color: #fff;" class="label label-sm label-info">提交未审核</span>'.html_safe if f.flag == 1 %>
+      <%= '<span style="display: inline;font-size: 75%;font-weight: bold;color: #fff;" class="label label-sm label-success">提交未审核</span>'.html_safe if f.flag == 2 %>
+	    </td>
+		</tr>
+		<% digit = 1 %>
+		<% while digit < a.size_groups.size do %>
+		<tr>
+		<% @list = a.size_groups[digit] %>
+			<td><%= @list.sizecode %></td>
+			<td style="width:10%;"><%=  @list.count %></td>
+		</tr>
+		<% digit += 1 %>
+		<% end %>
+		<tr>
+			<td colspan="9" style="color:red; height:30px; ">款式合计：<%= a.size_groups.sum(:count) %></td>
+		</tr>
+	<% end %>
+	<% end %>
+</tbody>
 								</table>
-								<!-- Footer goes here -->
-								<!--<ul class="pagination">
-									<li><a href="#">上一页</a></li>
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">下一页</a></li>
-								</ul>-->
+
 							</div>		
 							</div>
 										<div class="clear"> </div>

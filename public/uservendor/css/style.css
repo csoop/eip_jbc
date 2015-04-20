@@ -1385,7 +1385,8 @@ h2.resp-accordion:first-child {
 	height:20px;
 	display:inline-block;
 }
-.dcolor1.active,.dcolor2.active,.dcolor3.active,.dcolor4.active,.dcolor5.active,.dcolor6.active,.dcolor7.active,.dcolor8.active {border-color: #ccc;}
+.dcolor1.active,.dcolor9.active {border-color: #000;}
+.dcolor2.active,.dcolor3.active,.dcolor4.active,.dcolor5.active,.dcolor6.active,.dcolor7.active,.dcolor8.active,.dcolor10.active,.dcolor11.active,.dcolor12.active,.dcolor13.active,.dcolor14.active {border-color: #ccc;}
 .dcolor1 { 
 	background:#D2D6D5;
 }
@@ -2962,4 +2963,22 @@ a.btn {
   font-size: 1em;
   padding: 0.5em;
   font-family: 'Open Sans', sans-serif;
+}
+.label-info, .badge-info {
+background-color: #3a87ad!important;
+}
+.label-success, .badge-success {
+background-color: #82af6f!important;
+}
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
 }

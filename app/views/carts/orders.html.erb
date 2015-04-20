@@ -58,7 +58,7 @@
                     <% f.cart_items.each do |t| %>
                     <% size_count = t.size_groups.size %>
                       <tr>
-                        <td rowspan="<%= size_count %>">
+                        <td style="vertical-align: middle;" rowspan="<%= size_count %>">
                           <div class="row-fluid">
                             <ul class="ace-thumbnails">
 
@@ -73,31 +73,31 @@
                             </ul>
                           </div>
                         </td>
-                        <td rowspan="<%= size_count %>" class="hidden-480">
+                        <td style="vertical-align: middle;" rowspan="<%= size_count %>" class="hidden-480">
                           <%= t.buyer.ppname%>
                         </td>
-                        <td rowspan="<%= size_count %>" class="hidden-480">
+                        <td style="vertical-align: middle;" rowspan="<%= size_count %>" class="hidden-480">
                           <%= t.buyer.styleid%>
                         </td>
-                        <td rowspan="<%= size_count %>" class="hidden-480">
+                        <td style="vertical-align: middle;" rowspan="<%= size_count %>" class="hidden-480">
                           <%= t.color%>
                         </td>
-                        <td rowspan="<%= size_count %>" class="hidden-480">
+                        <td style="vertical-align: middle;" rowspan="<%= size_count %>" class="hidden-480">
                           <%= t.buyer.fabric%>
                         </td>
-                        <td rowspan="<%= size_count %>" class="hidden-480">
+                        <td style="vertical-align: middle;" rowspan="<%= size_count %>" class="hidden-480">
                           <%= t.buyer.price%>
                         </td>
-                        <td rowspan="<%= size_count %>"><%= t.created_at.to_date %></td>
-                        <td rowspan="<%= size_count %>"><%= f.user.name %></td>
+                        <td style="vertical-align: middle;" rowspan="<%= size_count %>"><%= t.created_at.to_date %></td>
+                        <td style="vertical-align: middle;" rowspan="<%= size_count %>"><%= f.user.name %></td>
                         <% @one = t.size_groups.first %>
-                        <td class="hidden-480"><%=  @one.sizecode %></td>
+                        <td style="vertical-align: middle;" class="hidden-480"><%=  @one.sizecode %></td>
                         <td class="center"><%= text_field_tag @one.id, @one.count, style: "color:green; width: 50%;" %></td>
-                        <td rowspan="<%= size_count %>" class="hidden-480">
+                        <td style="vertical-align: middle;" rowspan="<%= size_count %>" class="hidden-480">
                           <%= '<span class="label label-sm label-info">最新订单</span>'.html_safe if f.flag == 1 %>
                         </td>
 
-                        <td rowspan="<%= size_count %>">
+                        <td style="vertical-align: middle;" rowspan="<%= size_count %>">
                           <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
                             <%= link_to '<i class="icon-trash bigger-130"></i>'.html_safe, t, method: :delete, data: { confirm: 'Are you sure?' },class:"red" %>
                           </div>
@@ -120,11 +120,14 @@
                       <% while digit < t.size_groups.size do %>
                       <tr>
                       <% @list = t.size_groups[digit] %>
-                        <td class="hidden-480"><%= @list.sizecode %></td>
+                        <td style="vertical-align: middle;" class="hidden-480"><%= @list.sizecode %></td>
                         <td  class="center"><%= text_field_tag @list.id, @list.count, style: "color:green; width: 50%;" %></td>
                       </tr>
                       <% digit += 1 %>
                       <% end %>
+                      <tr>
+                        <td colspan="12" style="color:red;">款式合计  ：<%= t.size_groups.sum(:count) %></td>
+                      </tr>
                       <% end %>
                       <% end %>
                       <tfoot>

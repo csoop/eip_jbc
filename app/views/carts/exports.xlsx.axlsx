@@ -1,8 +1,8 @@
 # encoding: utf-8
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Exports") do |sheet|
-	sheet.add_row ["ping","kk","ss","cc","cc","22","33"]
+	sheet.add_row ["八成","kk","ss","cc","cc","22"]
 	@exports.each do |export|
-		sheet.add_row [export.buyer.ppname, export.buyer.styleid, export.color, export.buyer.fabric, export.cart.user.name, export.updated_at.to_date, export.count]
+		sheet.add_row [export.buyer.ppname, export.buyer.styleid, export.color, export.buyer.fabric, export.cart.user.name, export.updated_at.to_date]
 	end
 end
