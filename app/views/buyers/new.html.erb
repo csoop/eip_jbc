@@ -83,8 +83,8 @@
 
                                 <div class="col-xs-12 col-sm-5">
                                   <span class="block input-icon input-icon-right">
-                                    <%= f.select "color", "<option value='黑色'>黑色</option><option value='棕色'>棕色</option><option value='绿色'>绿色</option><option value='金色'>金色</option><option value='粉色'>粉色</option><option value='杏色'>杏色</option><option value='银白'>银白</option><option value='米白'>米白</option>
-                    <option value='蓝色'>蓝色</option><option value='白色'>白色</option><option value='梅红'>梅红</option><option value='浅绿'>浅绿</option><option value='橘黄'>橘黄</option><option value='深紫'>深紫</option><option value='淡黄'>淡黄</option>".html_safe, {}, {class: "width-80 chosen-select", data: {placeholder: "选择颜色"}, multiple: true} %>
+                                    <%= f.select :color, "<option value='黑色'>黑色</option><option value='棕色'>棕色</option><option value='绿色'>绿色</option><option value='金色'>金色</option><option value='粉色'>粉色</option><option value='杏色'>杏色</option><option value='银白'>银白</option><option value='米白'>米白</option>
+                    <option value='蓝色'>蓝色</option><option value='白色'>白色</option><option value='梅红'>梅红</option><option value='浅绿'>浅绿</option><option value='橘黄'>橘黄</option><option value='深紫'>深紫</option><option value='淡黄'>淡黄</option>".html_safe, {}, {class: "width-80 selectpicker show-tick form-control", data: {live_search: "true"}, multiple: true} %>
                                   </span>
                                 </div>
                               </div>
@@ -94,8 +94,8 @@
 
                                 <div class="col-xs-12 col-sm-5">
                                   <span class="block input-icon input-icon-right">
-                                    <%= f.select "fabric",  "<option value=''></option><option value='牛皮'>牛皮</option><option value='PU'>PU</option><option value='羊皮'>羊皮</option><option value='布艺'>布艺</option><option value='革'>革</option>
-                    ".html_safe, {}, {class: "width-80 chosen-select", data: {placeholder: "选择面料"}}  %>
+                                    <%= f.select "fabric",  "<option value='牛皮'>牛皮</option><option value='PU'>PU</option><option value='羊皮'>羊皮</option><option value='布艺'>布艺</option><option value='革'>革</option>
+                    ".html_safe, {}, {class: "width-80 selectpicker show-tick form-control", data: {live_search: "true"}}  %>
                                   </span>
                                 </div>
                               </div>
@@ -104,8 +104,7 @@
 
                                 <div class="col-xs-12 col-sm-5">
                                   <span class="block input-icon input-icon-right">
-                                    <%= f.select "category",  "<option value=''></option><option value='男鞋'>男鞋</option><option value=''></option><option value='女鞋'>女鞋</option>
-                    <option value='童鞋'>童鞋</option>".html_safe, {}, {class: "width-80 chosen-select", data: {placeholder: "选择尺码组"}}  %>
+                                    <%= f.select "category",  "<option value='女鞋'>女鞋</option><option value='男鞋'>男鞋</option><option value='童鞋'>童鞋</option>".html_safe, {}, {class: "width-80 selectpicker show-tick form-control", data: {live_search: "true"}}  %>
                                   </span>
                                 </div>
                               </div>
@@ -126,7 +125,20 @@
 </div>
 
 <!-- Matter ends -->
-  <link rel="stylesheet" href="/style/chosen.css">
+  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap-select.js"></script>
+
+    <script type="text/javascript">
+      $(window).on('load', function () {
+
+          $('.selectpicker').selectpicker({
+              'selectedText': 'cat'
+          });
+
+          // $('.selectpicker').selectpicker('hide');
+      });
+  </script>
+
   <!--[if !IE]> -->
 
   <script type="text/javascript">
@@ -144,19 +156,6 @@
   </script>
   <!-- page specific plugin scripts -->
   <script src="/js/custom.js"></script> 
-  <script src="/js/chosen.min.js"></script>
-
-  <script type="text/javascript">
-    
-      $(".chosen-select").chosen(); 
-      $('#chosen-multiple-style').on('click', function(e){
-        var target = $(e.target).find('input[type=radio]');
-        var which = parseInt(target.val());
-        if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
-         else $('#form-field-select-4').removeClass('tag-input-style');
-      });
-    
-  </script>
 
 </div>
 <!-- Footer starts -->

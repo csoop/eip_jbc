@@ -30,7 +30,8 @@
                         <input type="checkbox" class="ace" />
                         <span class="lbl"></span>
                       </label> -->
-                      价格
+                      <i class="icon-time bigger-110 hidden-480"></i>
+                      上传时间
                     </th>
                     <th>照片</th>
                     <th><i class="icon-user bigger-110 hidden-480"></i>上传者</th>
@@ -40,8 +41,7 @@
                     <th class="hidden-480">款式编号</th>
                     <th class="hidden-480">品类</th>
                     <th>
-                      <i class="icon-time bigger-110 hidden-480"></i>
-                      上传时间
+                      价格
                     </th>
                     <th class="hidden-480">状态</th>
 
@@ -58,7 +58,7 @@
                             <input type="checkbox" class="ace" />
                             <span class="lbl"></span>
                           </label> -->
-                          ¥：<%= f.price %>
+                          <%= f.created_at.to_date %>
                         </td>
 
                         <td>
@@ -92,7 +92,7 @@
                         <td class="hidden-480">
                           <%= f.category%>
                         </td>
-                        <td><%= f.created_at.to_date %></td>
+                        <td>¥：<%= f.price %></td>
 
                         <td class="hidden-480">
                           <% if f.flag==0%>
